@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
+<!-- 采用的bootcss搭建，文档路径https://v3.bootcss.com/  -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +24,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">logo</a> 
-                <div id="Visit">你是第位到访</div>
+                
             </div>
                
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -45,16 +45,16 @@
                         <a href="#">教育</a>
                     </li>
                     <li>
-                        <a href="#">党性教育</a>
+                        <a href="dxjy.html">党性教育</a>
                     </li>
                     <li>
-                        <a href="#">营业部</a>
+                        <a href="/oye_pc">营业部</a>
                     </li>
                     <li>
                         <a href="#">登录</a>
                     </li>
                     <li>
-                        <a href="#">注册</a>
+                        <a href="#" onclick='alert("暂时没有开放此通道")'>注册</a>
                     </li>
                 </ul>
             </div>
@@ -125,33 +125,44 @@
         <div class="row">
             <div class="col-xs-6 col-md-3">
                 <a href="#" class="thumbnail">
-                    <img src="http://hontu.net/images/qita.jpg" alt="...">
-                </a>
+                    <img src="http://hontu.net/images/lvyou.jpg" alt="...">
+                </a><div class="caption">
+                    <h3>旅游</h3>
+                </div>
             </div>
 
             <div class="col-xs-6 col-md-3">
                 <a href="#" class="thumbnail">
-                    <img src="http://hontu.net/images/qita.jpg" alt="...">
-                </a>
+                    <img src="http://hontu.net/images/wenhua.jpg" alt="...">
+                </a><div class="caption">
+                    <h3>文化</h3>
+                </div>
             </div>
 
             <div class="col-xs-6 col-md-3">
                 <a href="#" class="thumbnail">
-                    <img src="http://hontu.net/images/qita.jpg" alt="...">
-                </a>
+                    <img src="http://hontu.net/images/jiaoyu.jpg" alt="...">
+                </a><div class="caption">
+                    <h3>教育</h3>
+                </div>
             </div>
 
             <div class="col-xs-6 col-md-3">
-                <a href="#" class="thumbnail">
+                <a href="dxjy.html" class="thumbnail">
                     <img src="http://hontu.net/images/qita.jpg" alt="...">
                 </a>
+                <div class="caption">
+                    <h3>党性教育</h3>
+                </div>
             </div>
         </div>
 
+
         <div id="foot1" class="center-block">
             <p class="text-primary" align="center">噢耶旅游</p>
+            <p>...</p>
             <p class="text-info" align="center">技术支持：山西九天瑞郎</p>
-
+            <!-- <p id="Visit">你是第1位到访</p> -->
         </div>
         
     </footer>

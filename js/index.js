@@ -12,14 +12,16 @@ function show() {
     s += "\n屏幕分辨率高度：" + window.screen.height;
     console.log(s);
 }
-// show()r
-// window.onload=function(){
-
+// show()
+// 网页加载完成
+// window.onload=function(){}
+$("#Visit").css("display","block");
 
 var qh,h,w;
 window.onresize = function () {
     vive();
 }
+// 控制轮播图过大
 function vive() {
     qh = $("header").height() + $("footer").height() + 120;
     h = window.screen.availHeight - qh + "px";
@@ -28,10 +30,10 @@ function vive() {
     $(".item img").css("max-height", h);
     w = document.body.offsetWidth / 2 - 100 + "px";
     console.log(h,w)
-    $("#Visit").css("margin-left", w);
+    // $("#Visit").css("margin-left", w);
 };
 vive();
-
+// 计算访问人数
 var caution = false
 
 function setCookie(name, value, expires, path, domain, secure) {
@@ -46,7 +48,7 @@ function setCookie(name, value, expires, path, domain, secure) {
         document.cookie = curCookie
     }
 }
-
+// alert("暂时没有开放此通道")
 function getCookie(name) {
     var prefix = name + "="
     var cookieStartIndex = document.cookie.indexOf(prefix)
@@ -87,8 +89,6 @@ if (!visits) {
 }
 setCookie("counter", visits, now);
 
-// document.write("您是到访的第" + visits + "位用户！")
 
+$("#foot1").append("<p align='center'>您是的第" + visits + "次到访用户！<p>");
 
-
-$("#Visit").text("您是到访的第" + visits + "位用户！");
