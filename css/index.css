@@ -18,21 +18,8 @@ table { border-collapse:collapse; border-spacing:0; }
 /* 头部导航 */
 header{
     height: 60px;
+    z-index: 999;
 }
-/* 轮播图 */
-nav{
-
-
-}
-/* 尾部处理 */
-footer{
-
-
-}
-footer div{
-
-}
-
 .navbar{
     margin-bottom: 0;
 }
@@ -43,8 +30,24 @@ html{
     overflow-x:hidden;
 }
 .item{
-    max-height: 470px; 
+    overflow: hidden;
+    /* padding-bottom: 60px; */
+    /* margin-bottom: 30px; */
 }
 #foot1{
     width: 100%;
+}
+footer{
+    margin-top: 30px;
+}
+#Visit{
+    position:absolute;
+    width: 200px;
+    height: 20px;
+    /* margin-left: 600px; */
+}
+@media screen and (max-width: 768px) {
+   .nav li{
+    background-color:#e7e7e7; 
+}
 }
