@@ -46,6 +46,7 @@ footer{
     height: 20px;
     /* margin-left: 600px; */
 }
+/* 个人补全boostbug */
 @media screen and (max-width: 768px) {
    .nav li{
     background-color:#e7e7e7; 
