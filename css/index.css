@@ -20,9 +20,13 @@ header{
     height: 60px;
     z-index: 999;
 }
+header{
+    background-color: #e7e7e7;
+}
 .navbar{
     margin-bottom: 0;
 }
+
 .item img{
     width: 100%;
 }
@@ -52,5 +56,20 @@ footer{
 }
 }
 .caption h3{
-    display: none;
+    /* display: none; */
+    text-align: center;
+    margin-bottom: 30px;
+}
+.thumbnail{
+    margin-bottom: 0;
+}
+@media screen and (min-width:1280px){
+    .navbar {
+        margin: 0 auto;
+        width: 80%;
+    }
+    footer {
+        margin: 30px auto 0 auto;
+        width: 80%;
+    }
 }
