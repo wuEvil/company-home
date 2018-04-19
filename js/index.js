@@ -28,7 +28,7 @@ function vive() {
     console.log(1);
     $(".item").css("max-height", h);
     $(".item img").css("max-height", h);
-    w = document.body.offsetWidth / 2 - 100 + "px";
+    w = document.body.offsetWidth / 2 + "px";
     console.log(h,w)
     // $("#Visit").css("margin-left", w);
 };
@@ -90,5 +90,5 @@ if (!visits) {
 setCookie("counter", visits, now);
 
 
-$("#foot1").append("<p align='center'>您是的第" + visits + "次到访用户！<p>");
+$("#foot1").append("<p align='center'>您是的第<span style='color:green;font-size: 20px;'>" + visits + "</span>次到访用户！<p>");
 

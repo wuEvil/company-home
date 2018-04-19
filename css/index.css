@@ -39,7 +39,7 @@ html{
 #foot1{
     width: 100%;
 }
-footer{
+footer,.row{
     margin-top: 30px;
 }
 #Visit{
@@ -69,7 +69,38 @@ footer{
         width: 80%;
     }
     footer {
-        margin: 30px auto 0 auto;
+        margin: 30px auto;
         width: 80%;
     }
+}
+.foots div{
+    margin-left: 20px;
+    float: left;
+}
+
+.caption1 {
+    max-width:840px;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+    -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.caption1 h2{
+    font-size: 25px;
+    line-height: 40px; 
+    margin-bottom: 5px;
+    color: hsl(143, 87%, 27%);
+}
+.caption1 h3{
+    font-size: 23px;
+    line-height: 35px; 
+    margin-bottom: 5px;
+}
+.caption1 p{
+    font-size: 18px;
+    line-height: 30px; 
+    margin-bottom: 5px;
+    color: #0b08a7;
+}
+#mmm{
+    background-color: greenyellow;
 }
