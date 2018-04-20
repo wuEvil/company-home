@@ -15,22 +15,30 @@ function show() {
 // show()
 // 网页加载完成
 // window.onload=function(){}
-$("#Visit").css("display","block");
-
-var qh,h,w;
+// $("#Visit").css("display","block");
+jscss(document.body.clientWidth);
+var qh, h, n, w;
 window.onresize = function () {
     vive();
+    jscss(document.body.clientWidth);
+    // console.log(document.body.clientWidth)
 }
+
 // 控制轮播图过大
 function vive() {
     qh = $("header").height() + $("footer").height() + 120;
     h = window.screen.availHeight - qh + "px";
-    console.log(1);
+    // console.log(1);
     $(".item").css("max-height", h);
     $(".item img").css("max-height", h);
-    w = document.body.offsetWidth / 2 + "px";
-    console.log(h,w)
+    n = document.body.offsetWidth / 2;
+    if (n <= 250) {
+        n = 250;
+    }
+    w = n + "px";
+    // console.log(h, w)
     // $("#Visit").css("margin-left", w);
+
 };
 vive();
 // 计算访问人数
@@ -92,3 +100,32 @@ setCookie("counter", visits, now);
 
 $("#foot1").append("<p align='center'>您是的第<span style='color:green;font-size: 20px;'>" + visits + "</span>次到访用户！<p>");
 
+
+// js处理公司简介,这里动态获取,页码改变等出发,
+function jscss(i) {
+    
+    if(i>980){
+        $("#mmm1,#mmm3").css("display","block");
+        $("#mmm2").attr("calss","caption1 col-xs-6 col-md-5");
+        $("#mmm1").attr("calss","col-xs-6 col-md-3")
+        $("#mmm3").attr("calss","col-xs-6 col-md-3")
+        $("#mmm2").css("width","43%")
+        console.log(1280);
+    }
+    
+    if (i<980&&i>780) {
+        $("#mmm3").css("display", "none");
+        $("#mmm1").css("display","block");
+        $("#mmm2").attr("calss","col-xs-6 col-md-8");
+        // $("#mmm2").attr("calss","col-xs-6 col-md-7")
+        // $("#mmm2").attr("calss","col-xs-6 col-md-7")
+        $("#mmm1").css("max-width","300px")
+        console.log(980)
+    }
+    if (i<780) {
+        $("#mmm3").css("display", "none");
+        $("#mmm1").css("display", "none");
+        $("#mmm2").css("width","98%");
+        console.log(780)
+    }  
+}
