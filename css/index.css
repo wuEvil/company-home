@@ -204,7 +204,7 @@ footer,
     font-size: 25px;
     line-height: 40px;
     margin-bottom: 5px;
-    color: hsl(143, 87%, 27%);
+    color: #0b22eefa;
 }
 
 .caption1 h3 {
@@ -217,12 +217,23 @@ footer,
     font-size: 100%;
     line-height: 24px;
     margin-bottom: 5px;
-    color: rgba(53, 11, 238, 0.979);
+    color: #000;
 }
 
-#mmm1,#mmm3 {
-    background-color: greenyellow;
+#mmm1{
+    /* 备用标注大图 */
+    /* background-color: #2577e3; */
+    background-image: url("../images/timr.jpg");
+    background-repeat: no-repeat;
     height: 200px;
+    background-position: 50% 50%;
+}
+#mmm3 h2{
+    text-align: center;
+    /* background-image: url("../ima") */
+}
+#mmm3 p span{
+    float: right;
 }
 
 
@@ -262,3 +273,39 @@ footer,
         display: none;
     } */
 } 
+#m-text{
+    width: 98%;
+    height: 30px;
+    overflow: hidden;
+    text-align: center;
+}
+#m-text p{
+    height: 28px;
+    text-align: center;
+    /* width: 100%; */
+}
+
+/* #m-text{
+    /* width:1332px; */
+    /* position:absolute;  */
+    /* animation:gundong 5s linear infinite; 
+ } 
+ /* #m-text:hover{
+    animation-play-state:paused;
+ } */
+ /* #m-text p{
+    /* float:left; */
+    /* width:220px; */
+    /* height:28px; 
+    position:absolute;     
+    border:1px solid #fff;
+    transition:all 0.5s;
+ } 
+ #m-text p:hover{
+    border:1px solid red;
+ }
+
+/* @keyframes gundong{
+    0%{ left:0; }
+    100%{ top:-28px; } 
+ } */

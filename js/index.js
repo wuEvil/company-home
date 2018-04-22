@@ -17,7 +17,7 @@ function show() {
 // window.onload=function(){}
 // $("#Visit").css("display","block");
 jscss(document.body.clientWidth);
-var qh, h, n, w;
+var qh, h, n, w,hh;
 window.onresize = function () {
     vive();
     jscss(document.body.clientWidth);
@@ -27,8 +27,13 @@ window.onresize = function () {
 // 控制轮播图过大
 function vive() {
     qh = $("header").height() + $("footer").height() + 120;
-    h = window.screen.availHeight - qh + "px";
+    hh = window.screen.availHeight - qh;
     // console.log(1);
+    if(hh<300){
+        hh = 300;
+    }
+
+    h = hh + "px";
     $(".item").css("max-height", h);
     $(".item img").css("max-height", h);
     n = document.body.offsetWidth / 2;
@@ -106,6 +111,7 @@ function jscss(i) {
     
     if(i>980){
         $("#mmm1,#mmm3").css("display","block");
+        $("#m-text").css("display", "none");
         $("#mmm2").attr("calss","caption1 col-xs-6 col-md-5");
         $("#mmm1").attr("calss","col-xs-6 col-md-3")
         $("#mmm3").attr("calss","col-xs-6 col-md-3")
@@ -114,7 +120,7 @@ function jscss(i) {
     }
     
     if (i<980&&i>780) {
-        $("#mmm3").css("display", "none");
+        $("#mmm3,#m-text").css("display", "none");
         $("#mmm1").css("display","block");
         $("#mmm2").attr("calss","col-xs-6 col-md-8");
         // $("#mmm2").attr("calss","col-xs-6 col-md-7")
@@ -126,6 +132,7 @@ function jscss(i) {
         $("#mmm3").css("display", "none");
         $("#mmm1").css("display", "none");
         $("#mmm2").css("width","98%");
-        console.log(780)
+        console.log(780);
+        $("#m-text").css("display", "block");
     }  
 }
