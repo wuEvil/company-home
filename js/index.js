@@ -25,6 +25,9 @@ window.onresize = function () {
 }
 
 // 控制轮播图过大
+$('.carousel').carousel(
+    {interval : 3000}
+)
 function vive() {
     qh = $("header").height() + $("footer").height() + 120;
     hh = window.screen.availHeight - qh;
