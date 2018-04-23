@@ -124,6 +124,7 @@ header {
 
 .item img {
     width: 100%;
+    min-height: 200px;
 }
 
 html {
@@ -132,6 +133,7 @@ html {
 
 .item {
     overflow: hidden;
+    min-height: 200px;
 }
 
 #foot1 {
@@ -142,7 +144,9 @@ footer,
 .row {
     margin-top: 30px;
 }
-
+footer{
+    position: relative;
+}
 #Visit {
     height: 20px;
     display: none;
@@ -236,6 +240,13 @@ footer,
     float: right;
 }
 
+#mmm2 p{
+    /* height: 200px; */
+    overflow: hidden;
+    margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
 @media screen and (max-width:780px) {
     /* #mmm,
@@ -274,13 +285,19 @@ footer,
     } */
 } 
 #m-text{
-    width: 98%;
+    /* width: 400%; */
     height: 30px;
     overflow: hidden;
-    text-align: center;
+    /* text-align: center; */
+    
 }
-#m-text p{
+#m-text ul{
+    float: left;
+}
+#m-text li{
     height: 28px;
+    /* float: left; */
+    /* width: 80%; */
     text-align: center;
     /* width: 100%; */
 }
@@ -309,3 +326,46 @@ footer,
     0%{ left:0; }
     100%{ top:-28px; } 
  } */
+
+ .navbar-brand{
+     margin: 0;
+    padding: 0;
+ }
+ .navbar-brand img{
+     height: 58px;
+     /* width: 200px; */
+     /* background-image: url("/images/logo.jpg") */
+ }
+ .m-guangao{
+    display: none;
+   
+}
+ @media screen and (max-width: 780px) {
+    .col-xs-1 {
+        display: none;
+    }
+    .m-guangao{
+        display: block;
+        text-align: center;
+        width: 1200px;
+        height: 30px;
+        top: -20px;
+
+        overflow: hidden;
+        position: absolute;
+        animation:gundong 10s linear infinite;
+        /* position: relative; */
+        /* background-color: rebeccapurple; */
+    }
+}
+.m-guangao li{
+    width: 25%;
+    height: 30px;
+    float: left;
+    transition:all 0.5s;
+}
+
+@keyframes gundong{
+    0%{ left:0; }
+    100%{ left:-1100px; } 
+ }

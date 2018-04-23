@@ -12,15 +12,15 @@ function show() {
     s += "\n屏幕分辨率高度：" + window.screen.height;
     console.log(s);
 }
-// show()
+show()
 // 网页加载完成
 // window.onload=function(){}
 // $("#Visit").css("display","block");
-jscss(document.body.clientWidth);
+// jscss(document.body.clientWidth);
 var qh, h, n, w,hh;
 window.onresize = function () {
     vive();
-    jscss(document.body.clientWidth);
+    // jscss(document.body.clientWidth);
     // console.log(document.body.clientWidth)
 }
 
@@ -103,7 +103,7 @@ if (!visits) {
 setCookie("counter", visits, now);
 
 
-$("#foot1").append("<p align='center'>您是的第<span style='color:green;font-size: 20px;'>" + visits + "</span>次到访用户！<p>");
+$("#foot1").append("<p align='center'>您是的第<span style='color:green;font-size: 20px;'>" + visits+9845 + "</span>次到访用户！<p>");
 
 
 // js处理公司简介,这里动态获取,页码改变等出发,
