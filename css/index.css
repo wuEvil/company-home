@@ -1,4 +1,4 @@
-/* 样式初始化 */
+﻿/* 样式初始化 */
 
 body,
 h1,
@@ -338,8 +338,5 @@ footer{
         font-size: 14px;
         /* height: 120px; */
         line-height: 120%;
-    }
-    #mmm2{
-        height: 160px;
     }
  }
