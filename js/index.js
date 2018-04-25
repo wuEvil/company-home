@@ -12,22 +12,22 @@ function show() {
     s += "\n屏幕分辨率高度：" + window.screen.height;
     console.log(s);
 }
-show()
+// show()
 // 网页加载完成
 // window.onload=function(){}
 // $("#Visit").css("display","block");
 // jscss(document.body.clientWidth);
 var qh, h, n, w,hh;
 window.onresize = function () {
-    vive();
+    // vive();
     // jscss(document.body.clientWidth);
     // console.log(document.body.clientWidth)
 }
-
-// 控制轮播图过大
+// 轮播图速度控制
 $('.carousel').carousel(
     {interval : 3000}
 )
+// 控制轮播图过大
 function vive() {
     qh = $("header").height() + $("footer").height() + 120;
     hh = window.screen.availHeight - qh;
@@ -48,7 +48,8 @@ function vive() {
     // $("#Visit").css("margin-left", w);
 
 };
-vive();
+// 采用媒体查询改变max-width
+// vive();
 
 // 计算访问人数
 var caution = false

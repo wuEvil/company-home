@@ -233,20 +233,23 @@ footer{
     float: right;
 }
 #mmm2 {
-    height: 200px;
+    /* height: 200px; */
     overflow: hidden;
+    font-family:"楷体";
     /* text-overflow: ellipsis; */
 }
 #mmm2 p{
     /* height: 200px; */
-    overflow: hidden;
+    /* overflow: hidden; */
     margin: 0;
     /* white-space: nowrap; */
     text-overflow: ellipsis;
     word-break:break-word;
 }
 
-
+#mmm3{
+    font-family:"楷体";
+}
 
 #m-text{
     /* width: 400%; */
@@ -320,7 +323,8 @@ footer{
         text-align: center
     }
     #mmm2 p{
-        font-size: 18px;
+        font-size: 16px;
+        /* font-family:"楷体"; */
     }
     #mmm3 p{
         font-size: 18px;
@@ -332,7 +336,8 @@ footer{
     }
     #mmm2 p{
         font-size: 14px;
-        height: 120px;
+        /* height: 120px; */
+        line-height: 120%;
     }
     #mmm2{
         height: 160px;
