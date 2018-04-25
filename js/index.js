@@ -32,8 +32,8 @@ function vive() {
     qh = $("header").height() + $("footer").height() + 120;
     hh = window.screen.availHeight - qh;
     // console.log(1);
-    if(hh<300){
-        hh = 300;
+    if(hh<500){
+        hh = 500;
     }
 
     h = hh + "px";
@@ -49,6 +49,7 @@ function vive() {
 
 };
 vive();
+
 // 计算访问人数
 var caution = false
 
@@ -110,6 +111,7 @@ $("#foot1").append("<p align='center'>您是的第<span style='color:green;font-
 
 
 // js处理公司简介,这里动态获取,页码改变等出发,
+// css采用媒体查询没有,js使用有页面闪烁的效果,不采用
 function jscss(i) {
     
     if(i>980){
