@@ -17,22 +17,22 @@ function show() {
 // window.onload=function(){}
 // $("#Visit").css("display","block");
 // jscss(document.body.clientWidth);
-var qh, h, n, w,hh;
+var qh, h, n, w, hh;
 window.onresize = function () {
     // vive();
     // jscss(document.body.clientWidth);
     // console.log(document.body.clientWidth)
 }
 // 轮播图速度控制
-$('.carousel').carousel(
-    {interval : 3000}
-)
+$('.carousel').carousel({
+    interval: 3000
+})
 // 控制轮播图过大
 function vive() {
     qh = $("header").height() + $("footer").height() + 120;
     hh = window.screen.availHeight - qh;
     // console.log(1);
-    if(hh<500){
+    if (hh < 500) {
         hh = 500;
     }
 
@@ -108,37 +108,47 @@ if (!visits) {
 setCookie("counter", visits, now);
 
 
-$("#foot1").append("<p align='center'>您是的第<span style='color:green;font-size: 20px;'>" + visits+9845 + "</span>次到访用户！<p>");
+$("#foot1").append("<p align='center'>您是的第<span style='color:green;font-size: 20px;'>" + visits + 9845 + "</span>次到访用户！<p>");
 
 
 // js处理公司简介,这里动态获取,页码改变等出发,
 // css采用媒体查询没有,js使用有页面闪烁的效果,不采用
 function jscss(i) {
-    
-    if(i>980){
-        $("#mmm1,#mmm3").css("display","block");
+
+    if (i > 980) {
+        $("#mmm1,#mmm3").css("display", "block");
         $("#m-text").css("display", "none");
-        $("#mmm2").attr("calss","caption1 col-xs-6 col-md-5");
-        $("#mmm1").attr("calss","col-xs-6 col-md-3")
-        $("#mmm3").attr("calss","col-xs-6 col-md-3")
-        $("#mmm2").css("width","43%")
+        $("#mmm2").attr("calss", "caption1 col-xs-6 col-md-5");
+        $("#mmm1").attr("calss", "col-xs-6 col-md-3")
+        $("#mmm3").attr("calss", "col-xs-6 col-md-3")
+        $("#mmm2").css("width", "43%")
         console.log(1280);
     }
-    
-    if (i<980&&i>780) {
+
+    if (i < 980 && i > 780) {
         $("#mmm3,#m-text").css("display", "none");
-        $("#mmm1").css("display","block");
-        $("#mmm2").attr("calss","col-xs-6 col-md-8");
+        $("#mmm1").css("display", "block");
+        $("#mmm2").attr("calss", "col-xs-6 col-md-8");
         // $("#mmm2").attr("calss","col-xs-6 col-md-7")
         // $("#mmm2").attr("calss","col-xs-6 col-md-7")
-        $("#mmm1").css("max-width","300px")
+        $("#mmm1").css("max-width", "300px")
         console.log(980)
     }
-    if (i<780) {
+    if (i < 780) {
         $("#mmm3").css("display", "none");
         $("#mmm1").css("display", "none");
-        $("#mmm2").css("width","98%");
+        $("#mmm2").css("width", "98%");
         console.log(780);
         $("#m-text").css("display", "block");
-    }  
+    }
 }
+
+$("#mmm2").click(function () {
+    // alert(222)}
+    $("#pop-up,#pop-down").css("display", "block")
+    $("html,body").css("overflow-y","hidden")
+})
+$("#move").click(function () {
+    $("#pop-up,#pop-down").css("display", "none")
+    $("html,body").css("overflow-y","visible")
+})

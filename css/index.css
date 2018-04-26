@@ -340,3 +340,32 @@ footer{
         line-height: 120%;
     }
  }
+/* 背景遮挡层 */
+ #pop-up{
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index:1001;
+    -moz-opacity: 0.8;
+    opacity:.80;
+    filter: alpha(opacity=80);
+
+ }
+ #pop-down{
+    display: none;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    width: 40%;
+    height: 40%;
+    /* border: 16px solid lightblue; */
+    background-color: white;
+    z-index:1002;
+    overflow: auto;
+    min-width: 600px;
+    min-height: 400px;
+ }
