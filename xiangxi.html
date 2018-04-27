@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>公告</title>
+
+</head>
+<body>
+    
+</body>
+
+<script type="text/javascript">
+var re1 = /(\d{1,3})+(?:\.\d+)?/
+// var re2 = /[\u4e00-\u9fa5]{2,}/g
+var str="88美元23欧元 34.89人民币";
+var arr1 = str.split(" ");
+// var arr2 = str.match(re2);
+// document.write(arr1[0]);
+// document.write('</br>');
+// document.write(arr2);
+ 
+</script>
+
+<script>
+
+    function parseURL(url){
+        // console.log(url)
+    var url = url.split("?=")[1];
+        // console.log(url)
+
+    // var para = url.split("&");
+    // var len = para.length;
+    // var res = {};
+    // var arr = [];
+    // console.log(para,len,url)
+    // for(var i=0;i<len;i++){
+    //     arr = para.split("=");
+    //     res[arr[0]] = arr[1];
+    // }
+    return url;
+}
+if(txt!="undefined"){
+var txt = unescape(parseURL(window.location.href))
+// console.log(txt)
+document.write("<h1>"+txt.split(" ")[0]+"</h1>");
+document.title=txt;}
+</script>
+</html>

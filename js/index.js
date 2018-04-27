@@ -18,9 +18,20 @@ function show() {
 // $("#Visit").css("display","block");
 // jscss(document.body.clientWidth);
 var qh, h, n, w, hh;
+if (document.body.clientWidth < 780) {
+    $("#move,#mmm2").unbind("click")
+}
+if (document.body.clientWidth > 780) {
+    $("#move,#mmm2").bind("click")
+}
 window.onresize = function () {
     // vive();
-    // jscss(document.body.clientWidth);
+    if (document.body.clientWidth < 780) {
+        $("#move,#mmm2").unbind("click")
+    }
+    if (document.body.clientWidth > 780) {
+        $("#move,#mmm2").bind("click")
+    }
     // console.log(document.body.clientWidth)
 }
 // 轮播图速度控制
@@ -146,9 +157,14 @@ function jscss(i) {
 $("#mmm2").click(function () {
     // alert(222)}
     $("#pop-up,#pop-down").css("display", "block")
-    $("html,body").css("overflow-y","hidden")
+    $("html,body").css("overflow-y", "hidden")
 })
 $("#move").click(function () {
     $("#pop-up,#pop-down").css("display", "none")
-    $("html,body").css("overflow-y","visible")
+    $("html,body").css("overflow-y", "visible")
+})
+
+$("#mmm3 a,.m-guangao li").click(function () {
+    var txt = escape(this.text);
+    location.href = "xiangxi.html?=" + txt
 })
