@@ -1,0 +1,681 @@
+<!-- <%@page import="com.zzyd.oyetravel.entity.supplier.Supplier"%>
+    <%@page import="com.creatsoftware.commons.utils.KeyProvider"%>
+        <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+            <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+                <% 
+	String path = request.getContextPath();
+%> -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--框架必需start-->
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link href="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/css/bootstrap.min.css?v=3.3.5" rel="stylesheet" />
+    <link href="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" />
+    <link href="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/css/plugins/chosen/chosen.css" rel="stylesheet">
+    <link href="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/css/animate.min.css" rel="stylesheet" />
+    <link href="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/css/style.min.css?v=4.0.0" rel="stylesheet" />
+    <link href="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/plugins/layui2.0/css/layui.css" rel="stylesheet" />
+    <link href="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="D:\webpack开发\oye\oyetravel\WebContent/libs/thirdparty/ueditor/themes/default/css/ueditor.css" rel="stylesheet">
+    <!-- 百度富文本 -->
+    <!-- 文件上传css start -->
+    <link href="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/plugins/fileinput/css/fileinput.min.css" rel="stylesheet"
+    />
+    <!-- 文件上传css end -->
+
+    <!-- 文件上传js end -->
+    <title>线路添加</title>
+</head>
+
+<body>
+    <!-- 11 = <%=request.getParameter(" index ") %> -->
+    <input type="hidden" isd="index" value="11" />
+    <div class="container">
+        <!-- <form class="form-horizontal m-t" id="commentForm" action=""> -->
+        <!-- var 22 = <%=session.getAttribute(" loginName ")%> -->
+        <input style="display: none;" type="text" value="22" id="create_user" name="create_user" />
+        <div class="form-group">
+            <label class="col-sm-2 control-label ">线路编号
+                <font color='red'>*</font>
+            </label>
+            <div class="col-sm-10 control-label ">
+                <input type="text " maxlength="50 " name="tourline_sn " id="tourline_sn " class="form-control " required=" " aria-required="true "
+                />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">标题
+                <font color='red'>*</font>
+            </label>
+            <div class="col-sm-10 control-label ">
+                <input type="text " maxlength="100 " name="title " id="title " class="form-control " required=" " aria-required="true " />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">路线简介
+                <font color='red'>*</font>
+            </label>
+            <div class="col-sm-10 control-label ">
+                <textarea rows="3 " class="form-control " style="height: 100px " name="brief " id="brief "></textarea>
+            </div>
+        </div>
+
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">费用说明</label>
+            <div class="col-sm-10 control-label ">
+                <textarea rows="3 " class="form-control " style="height: 100px " name="price_explain " id="price_explain "></textarea>
+            </div>
+        </div>
+
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">产品特色</label>
+            <div class="col-sm-10 control-label ">
+                <textarea rows="3 " class="form-control " style="height: 100px " name="tour_feature " id="tour_feature "></textarea>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">预定提示</label>
+            <div class="col-sm-10 control-label ">
+                <textarea rows="3 " class="form-control " style="height: 100px " name="appoint_desc " id="appoint_desc "></textarea>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">出游人群限制</label>
+            <div class="col-sm-10 control-label ">
+                <textarea rows="3 " class="form-control " style="height: 100px " name="travel_restrictions " id="travel_restrictions "></textarea>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">儿童标准</label>
+            <div class="col-sm-10 control-label ">
+                <textarea rows="3 " class="form-control " style="height: 100px " name="child_norm " id="child_norm "></textarea>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">是否需要签证
+                <font color='red'>*</font>
+            </label>
+            <div class="col-sm-4 control-label ">
+                <select class="form-control " name="is_visa " id="is_visa ">
+                    <option value="1 ">是</option>
+                    <option selected="selected " value="0 ">否</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">签证说明</label>
+            <div class="col-sm-10 control-label ">
+                <textarea rows="3 " class="form-control " style="height: 100px " name="visa_brief " id="visa_brief "></textarea>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">签证名称</label>
+            <div class="col-sm-4 control-label ">
+                <input type="text " maxlength="300 " name="visa_name " id="visa_name " class="form-control " />
+            </div>
+            <label class="col-sm-2 control-label ">签证单价</label>
+            <div class="col-sm-4 control-label ">
+                <input type="text " onkeyup="this.value=this.value.replace(/[^0-9\.]/g, '') " maxlength="10 " name="visa_price
+                                    " id="visa_price " class="form-control " />
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">线路区域
+                <font color='red'>*</font>
+            </label>
+            <div class="col-sm-4 control-label ">
+                <select class="form-control " id="tour_range " name="tour_range ">
+                    <option selected="selected " value="1 ">国内游</option>
+                    <option value="2 ">出境游</option>
+                    <option value="3 ">周边游</option>
+                </select>
+            </div>
+            <label class="col-sm-2 control-label ">线路类型
+                <font color='red'>*</font>
+            </label>
+            <div class="col-sm-4 control-label ">
+                <select class="form-control " id="tour_type " name="tour_type ">
+
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">是否支持改退
+                <font color='red'>*</font>
+            </label>
+            <div class="col-sm-4 control-label ">
+                <select class="form-control " id="is_refund " name="is_refund ">
+                    <option selected="selected " value="1 ">是</option>
+                    <option value="0 ">否</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">改退说明</label>
+            <div class="col-sm-10 control-label ">
+                <textarea rows="3 " class="form-control " style="height: 100px " name="refund_desc " id="refund_desc "></textarea>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">退款方式
+                <font color='red'>*</font>
+            </label>
+            <div class="col-sm-4 control-label ">
+                <select class="form-control " id="refund_method " name="refund_method " onchange="refundOnChange(this) ">
+                    <option selected="selected " value="不接受退款 ">不接受退款</option>
+                    <option value="全额退款 ">全额退款</option>
+                    <option value="退款百分比 ">退款百分比</option>
+                    <option value="退款金额 ">退款金额</option>
+                </select>
+            </div>
+            <label class="col-sm-2 control-label " id='refund_value_label'>不接受退款</label>
+            <div class="col-sm-4 control-label ">
+                <input type="text " name="refund_value " id="refund_value " class="form-control " readonly="readonly " onkeyup="this.value=this.value.replace(/[^0-9\.]/g, '') "
+                    maxlength="10 " />
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">退款截止时间</label>
+            <div class="col-sm-10 control-label ">
+                <input type="text " maxlength="50 " name="refund_limited_time " id="refund_limited_time " class="form-control " />
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label class="col-sm-2 control-label ">路线详情
+                <font color='red'>*</font>
+            </label>
+            <div class="col-sm-10 control-label ">
+                <script id="editor " type="text/plain " name="tour_desc " style="width:100%;height:500px; "></script>
+            </div>
+        </div>
+
+        <!-- 33 = <%=KeyProvider.getPrimaryKey() %> -->
+        <input type="hidden " id="id " name="id " value="33" />
+        <div class="form-group">
+            <label class="col-sm-2 control-label">添加封面图</label>
+            <div class="col-sm-10  control-label">
+                <input id="myfile" name="myfile" class="file-loading" type="file" multiple>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-5 col-sm-offset-4" align="center">
+                <button class="btn btn-primary" type="button" id="btn" onclick="edit()">提交</button>
+            </div>
+        </div>
+        <!-- 表单合并 -->
+
+        <div class="layui-tab-content" style="height: 100px;">
+            <div class="layui-tab-item layui-show">
+                <!-- 编辑订单信息 -->
+                <div class="in_item_content_div">
+                    <div class="line_div">
+                        <label class="in_line_label">选择线路
+                            <font color='red'>*</font>
+                        </label>
+                        <div class="in_line_div">
+                            <select class="form-control" id="tourline_select" name='tourline_id'>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="line_div">
+                        <label class="in_line_label">开始预定时间
+                            <font color='red'>*</font>
+                        </label>
+                        <div class="in_line_div">
+                            <input class="form-control" id="start_time_input" onClick="WdatePicker()" onchange="resetriqi()" />
+                        </div>
+                    </div>
+
+                    <div class="line_div">
+                        <label class="in_line_label">结束预定时间
+                            <font color='red'>*</font>
+                        </label>
+                        <div class="in_line_div">
+                            <input class="form-control" id="end_time_input" onClick="WdatePicker()" onchange="resetriqi()" />
+                        </div>
+                    </div>
+                    <div class="line_div">
+                        <label class="in_line_label">时间信息
+                            <font color='red'>*</font>
+                        </label>
+                        <div class="in_line_div">
+                            <select class="form-control" id="shijianxuanze" onchange="getxuanzeriqi()">
+                                <option value="">请选择</option>
+                                <option value="1">单日发</option>
+                                <option value="2">双日发</option>
+                                <option value="3">周日发</option>
+                                <option value="4">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="line_div">
+                        <label class="in_line_label">所选日期
+                            <font color='red'>*</font>
+                        </label>
+                        <div class="in_line_div">
+                            <textarea rows="3" class="form-control" name="xuanzeriqi" id="xuanzeriqi" readonly="readonly"></textarea>
+                        </div>
+                    </div>
+                    <div class="line_div" style='margin-top: 30px'>
+                        <label class="in_line_label">最大出行人数
+                            <font color='red'>*</font>
+                        </label>
+                        <div class="in_line_div">
+                            <input class="form-control" id='adult_limit' name='adult_limit' onkeyup="this.value=this.value.replace(/[^0-9\.]/g,'')" maxlength="3"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="line_div">
+                        <label class="in_line_label">选择保险</label>
+                        <div class="in_line_div">
+                            <select class="form-control" id='insurance_select' name='insurance_id' onchange="onInusranceChangeListener()">
+                                <option value=''>请选择保险</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="line_div">
+                        <label class="in_line_label">保险内容</label>
+                        <div class="in_line_div">
+                            <input class="form-control" readonly="readonly" id='insurance_content_input' />
+                        </div>
+                    </div>
+
+                    <div class="line_div">
+                        <label class="in_line_label">保险简介</label>
+                        <div class="in_line_div">
+                            <input class="form-control" readonly="readonly" id='insurance_brief_input' />
+                        </div>
+                    </div>
+
+                    <div class="line_div">
+                        <label class="in_line_label">保险价格</label>
+                        <div class="in_line_div">
+                            <input class="form-control" readonly="readonly" id='insurance_price_input' />
+                        </div>
+                    </div>
+
+                    <div class="line_div">
+                        <label class="in_line_label">保险公司</label>
+                        <div class="in_line_div">
+                            <input class="form-control" readonly="readonly" id='insurance_company_input' />
+                        </div>
+                    </div>
+
+                    <div class="line_div">
+                        <label class="in_line_label">发团介绍
+                            <font color='red'>*</font>
+                        </label>
+                        <div class="in_line_div">
+                            <textarea rows="3" class="form-control" name="brief" id="brief"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div id="item_2_content_div">
+                    <div id="item_2_left_div">
+                        <ul id="area_tree_ul" class="no_style_ul"></ul>
+                    </div>
+                    <div id="item_2_right_div">
+                        <div>
+                            <button type="button" class="btn btn-success" onclick="editOkBtn()">
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                编辑完成
+                            </button>
+                            <button type="button" class="btn btn-warning" onclick="celearAllSelected()">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                重置清空
+                            </button>
+                            <hr />
+                            <p id="selected_hint_title">您当前未选中地区</p>
+                            <hr />
+                            <table class="table-bordered" width="100%">
+                                <tr>
+                                    <th>门市价</th>
+                                    <th>成本价</th>
+                                    <th>交接价</th>
+                                    <th>操作</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input class="form-control" placeholder="门市价" id='batch_price_input' value='0' onkeyup="this.value=this.value.replace(/[^0-9\.]/g,'')"
+                                            maxlength="10">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" placeholder="成本价" id='batch_cost_price_input' value='0' onkeyup="this.value=this.value.replace(/[^0-9\.]/g,'')"
+                                            maxlength="10">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" placeholder="交接价" id='batch_deal_price_input' value='0' onkeyup="this.value=this.value.replace(/[^0-9\.]/g,'')"
+                                            maxlength="10">
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-xs" onclick='onBatchBtnClickListener()'>
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                            批量修改
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <hr />
+                        <div>
+                            <table class="table-bordered" style="width: 100%" id="select_table">
+                                <tr class="table_header_tr">
+                                    <th>
+                                        <input type="checkbox">
+                                    </th>
+                                    <th>省</th>
+                                    <th>市</th>
+                                    <th>区、县</th>
+                                    <th>门市价</th>
+                                    <th>成本价</th>
+                                    <th>交接价</th>
+                                    <th>操作</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <!-- 时间&价格 -->
+                <div id="item_3_content_div">
+                    <div id="item_3_left_div">
+                        <ul id="dates_ul" class="no_style_ul">
+                            <li>
+                                <span class='inner_ul_span'>还未选择时间</span>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div id="item_3_right_div">
+                        <button type="button" class="btn btn-success" onclick="onUploadBtn()">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            确认发布
+                        </button>
+                        <hr/>
+                        <table class="table-bordered" width="100%">
+                            <tr>
+                                <th>门市价</th>
+                                <th>成本价</th>
+                                <th>交接价</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input class="form-control" placeholder="门市价" onkeyup="this.value=this.value.replace(/[^0-9\.]/g,'')" maxlength="10" id='batch_price_input_date_date'
+                                        value='0'>
+                                </td>
+                                <td>
+                                    <input class="form-control" placeholder="成本价" onkeyup="this.value=this.value.replace(/[^0-9\.]/g,'')" maxlength="10" id='batch_cost_price_input_date'
+                                        value='0'>
+                                </td>
+                                <td>
+                                    <input class="form-control" placeholder="交接价" onkeyup="this.value=this.value.replace(/[^0-9\.]/g,'')" maxlength="10" id='batch_deal_price_input_date'
+                                        value='0'>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-xs" onclick='onDatesBatchBtnClickListener()'>
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        批量修改
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        <hr/>
+                        <table class="table-bordered" style="width: 100%" id="dates_select_table">
+                            <tr class="table_header_tr">
+                                <th width="30px"></th>
+                                <th>省</th>
+                                <th>市</th>
+                                <th>区、县</th>
+                                <th>门市价</th>
+                                <th>成本价</th>
+                                <th>交接价</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- </form> -->
+        <!-- 44 = ${supplierSession.is_verify } -->
+        <input type="hidden" value="44" id="state_input" />
+    </div>
+
+
+</body>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/jquery.min.js?v=2.1.4"></script>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/bootstrap.min.js?v=3.3.5"></script>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/content.min.js?v=1.0.0"></script>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/plugins/chosen/chosen.jquery.js"></script>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/plugins/iCheck/icheck.min.js"></script>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/plugins/validate/messages_zh.min.js"></script>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/plugins/layer/layer.js"></script>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/plugins/layui2.0/layui.js"></script>
+<script type="text/javascript" src="D:\webpack开发\oye\jscomponents\WebContent/libs/js/form/datePicker/WdatePicker.js"></script>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/selectmutlivalue.js?v=2.1.4"></script>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/selectvalue.js?v=2.1.4"></script>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/js/plugins/sweetalert/sweetalert.min.js"></script>
+<!--百度富文本start-->
+<script>
+    window.UEDITOR_HOME_URL = "D:/webpack开发/oye/oyetravel/WebContent/libs/thirdparty/ueditor/";
+</script>
+<script src="D:\webpack开发\oye\oyetravel\WebContent/libs/thirdparty/ueditor/ueditor.config.js"></script>
+<script src="D:\webpack开发\oye\oyetravel\WebContent/libs/thirdparty/ueditor/ueditor.all.js"></script>
+<script src="D:\webpack开发\oye\oyetravel\WebContent/libs/thirdparty/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="D:\webpack开发\oye\oyetravel\WebContent/libs/thirdparty/ueditor/addCustomizeDialog.js"></script>
+
+<!-- 文件上传js start -->
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/plugins/fileinput/js/fileinput.min.js" type="text/javascript"></script>
+<script src="D:\webpack开发\oye\jscomponents\WebContent/bootstrap/plugins/fileinput/js/zh.js" type="text/javascript"></script>
+
+<!-- 异步提交start -->
+<script type="text/javascript">
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+        //时间选择器
+        laydate.render({
+            elem: '#refund_limited_time',
+            type: 'datetime'
+        });
+    });
+
+    function checkUserState() {
+        var state = $("#state_input").val();
+        if (state == '待补全资料') {
+            layer.alert("您还没有补全用户资料");
+            return false;
+        } else if (state == '待审核') {
+            layer.alert("请耐心等待账户审核通过");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    var ue = UE.getEditor('editor');
+
+    /*验证*/
+    function validform() {
+        console.log("验证口");
+        return $("#commentForm").validate();
+    }
+
+    function edit() {
+        var datas = $('#commentForm').serialize();
+        if (!checkUserState()) {
+            console.log(22);
+            return;
+        } else {
+            $(validform()); //验证
+            // validform().form()
+            if (true) {
+                swal({
+                    title: "是否完成编辑？",
+                    //text: "删除后将无法恢复，请谨慎操作！",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "完成",
+                    cancelButtonText: "未完成",
+                    closeOnConfirm: true
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        // datas = $.param({
+                        //     'publish': 1
+                        // }) + '&' + datas;
+                        var index = layer.load();
+
+                        datas = {
+                            'id': $("#id").val(),
+                            'tourline_id': $("#tourline_select").val(),
+                            'brief': $("#brief").val(),
+                            'adult_limit': $("#adult_limit").val(),
+                            'adult_buy_max': $("#adult_limit").val(),
+                            // 'area_cache': JSON.stringify(resultDataArray),
+                            'insurance_id': $("#insurance_select").val(),
+                            'create_user': $("#create_user").val(),
+                            'tourline_sn': $("#tourline_sn").val(),
+                            'title': $("#title").val(),
+                            'brief': $("#brief").val(),
+                            'price_explain': $("#price_explain").val(),
+                            'tour_feature': $("#tour_feature").val(),
+                            'appoint_desc': $("#appoint_desc").val(),
+                            'travel_restrictions': $("#travel_restrictions").val()
+                        }
+                        console.log(datas)
+                        $.ajax({
+                            type: "POST",
+                            // data: {
+                            //     id: 111
+                            // },
+                            data: datas,
+                            url: 'http://192.168.1.107:8080/oyetravel/addLine.htm',
+                            dataType: "json",
+                            // jsonpCallback: "ming",
+                            success: function (result) {
+                                console.log(result);
+                                layer.close(index);
+                                if (result == "success") {
+                                    layer.alert('添加成功');
+                                }
+                            }
+                        });
+
+                        function cd() {
+                            alert("cd")
+                        }
+                    } else {
+                        datas = $.param({
+                            'publish': 0
+                        }) + '&' + datas;
+                    }
+                });
+            }
+        }
+
+    }
+    // window.onload = 
+    function mmm() {
+        //如果当前session保存的用户名失效，重新登录
+        if ($("#create_user").val() == "null") {
+            parent.window.location = "/oyetravel";
+            return;
+        }
+        $.ajax({
+            type: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: 'text',
+            url: '/oyetravel/queryAllTourLineType.htm',
+            success: function (result) {
+                var json = JSON.parse(result);
+                for (var i = 0; i < json.length; i++) {
+                    document.getElementById("tour_type").innerHTML +=
+                        "<option value='" + json[i].id + "'>" +
+                        json[i].name + "</option>";
+                }
+            }
+        });
+    }
+
+    /****图片上传start*****/
+    $('#myfile').fileinput({ //初始化上传文件框
+        showUpload: false,
+        showRemove: false,
+        uploadAsync: true,
+        showCaption: false, //是否显示标题
+        language: "zh", //配置语言
+        uploadUrl: "../../../uploadfile.do",
+        uploadExtraData: {
+            "businessId": $("#id").val()
+        },
+        maxFileSize: 0,
+        maxFileCount: 3,
+        /*允许最大上传数，可以多个，当前设置单个*/
+        enctype: 'multipart/form-data',
+        allowedFileExtensions: ["jpg", "png", "gif"],
+        /*上传文件格式*/
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+        dropZoneTitle: "请通过拖拽图片文件放到这里",
+        dropZoneClickTitle: "或者点击此区域添加图片",
+        showBrowse: false,
+        browseOnZoneClick: true,
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+    $('#myfile').on("fileuploaded",
+        function (event, data, previewId, index) {
+            fileId.push(data.response.fileId);
+        })
+
+    /****图片上传end*****/
+
+    function refundOnChange(selectDOM) {
+        var value = selectDOM.value;
+        if (value == '不接受退款') {
+            $('#refund_value').attr('readonly', 'readonly');
+            $('#refund_value_label').text('不接受退款');
+        } else if (value == '全额退款') {
+            $('#refund_value_label').text('全额退款');
+            $('#refund_value').attr('readonly', 'readonly');
+        } else if (value == '退款百分比') {
+            $('#refund_value_label').text("退款百分比");
+            $('#refund_value').removeAttr('readonly');
+        } else if (value == '退款金额') {
+            $('#refund_value_label').text("退款金额");
+            $('#refund_value').removeAttr('readonly');
+        }
+    }
+</script>
+<!-- 异步提交end -->
+
+</html>

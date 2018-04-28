@@ -128,7 +128,8 @@ header {
     max-height: 450px;
 }
 
-html,body{
+html,
+body {
     overflow-x: hidden;
 }
 
@@ -146,7 +147,8 @@ footer,
 .row {
     margin-top: 30px;
 }
-footer{
+
+footer {
     position: relative;
 }
 
@@ -187,7 +189,6 @@ footer{
     }
 }
 
-
 .caption1 {
     /* min-width: 640px; */
     /* max-width: 54%; */
@@ -217,7 +218,7 @@ footer{
     color: #000;
 }
 
-#mmm1{
+#mmm1 {
     /* 备用标注大图 */
     /* background-color: #2577e3; */
     background-image: url("../images/timr.jpg");
@@ -225,67 +226,72 @@ footer{
     height: 200px;
     background-position: 50% 50%;
 }
-#mmm3 h2{
+
+#mmm3 h2 {
     text-align: center;
     /* background-image: url("../ima") */
 }
-#mmm3 p span{
+
+#mmm3 p span {
     float: right;
 }
+
 #mmm2 {
     /* height: 200px; */
     overflow: hidden;
-    font-family:"楷体";
+    font-family: "楷体";
     /* text-overflow: ellipsis; */
 }
-#mmm2 p{
+
+#mmm2 p {
     /* height: 200px; */
     /* overflow: hidden; */
     margin: 0;
     /* white-space: nowrap; */
     text-overflow: ellipsis;
-    word-break:break-word;
+    word-break: break-word;
 }
 
-#mmm3{
-    font-family:"楷体";
+#mmm3 {
+    font-family: "楷体";
 }
 
-#m-text{
+#m-text {
     /* width: 400%; */
     height: 30px;
     overflow: hidden;
     /* text-align: center; */
-    
 }
-#m-text ul{
+
+#m-text ul {
     float: left;
 }
-#m-text li{
+
+#m-text li {
     height: 28px;
-
     text-align: center;
-
 }
 
- .navbar-brand{
-     margin: 0;
+.navbar-brand {
+    margin: 0;
     padding: 0;
- }
- .navbar-brand img{
-     height: 58px;
-     /* width: 200px; */
-     /* background-image: url("/images/logo.jpg") */
- }
- .m-guangao{
-    display: none;
-   
 }
- @media screen and (max-width: 780px) {
+
+.navbar-brand img {
+    height: 58px;
+    /* width: 200px; */
+    /* background-image: url("/images/logo.jpg") */
+}
+
+.m-guangao {
+    display: none;
+}
+
+@media screen and (max-width: 780px) {
     .col-xs-1 {
         display: none;
     }
-    .m-guangao{
+    .m-guangao {
         display: block;
         text-align: center;
         width: 300px;
@@ -293,69 +299,76 @@ footer{
         /* position: relative; */
         /* background-color: rebeccapurple; */
     }
-    .m-guangao ul{
-        width: 1200px; 
+    .m-guangao ul {
+        width: 1200px;
         height: 30px;
         margin-top: 10px;
         overflow: hidden;
         position: absolute;
-        animation:gundong 10s linear infinite;
+        animation: gundong 10s linear infinite;
     }
-    .text-info{
+    .text-info {
         font-size: 12px;
     }
-    
 }
-.m-guangao li{
+
+.m-guangao li {
     width: 25%;
     height: 30px;
     float: left;
-    transition:all 0.5s;
+    transition: all 0.5s;
 }
 
-@keyframes gundong{
-    0%{ left:0; }
-    100%{ left:-1100px; } 
- }
+@keyframes gundong {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: -1100px;
+    }
+}
 
- @media screen and (min-width: 1280px) {
-    #mmm2 h2{
+@media screen and (min-width: 1280px) {
+    #mmm2 h2 {
         text-align: center
     }
-    #mmm2 p{
+    #mmm2 p {
         font-size: 16px;
         /* font-family:"楷体"; */
     }
-    #mmm3 p{
+    #mmm3 p {
         font-size: 18px;
     }
- } 
- @media screen and (max-width: 780px) {
-    #mmm2 h2{
+}
+
+@media screen and (max-width: 780px) {
+    #mmm2 h2 {
         font-size: 20px
     }
-    #mmm2 p{
+    #mmm2 p {
         font-size: 14px;
         /* height: 120px; */
         line-height: 120%;
     }
- }
+}
+
 /* 背景遮挡层 */
- #pop-up{
+
+#pop-up {
     display: none;
     position: absolute;
     top: 0%;
     left: 0%;
     width: 100%;
-    height: 100%;
+    height: 110%;
     background-color: black;
-    z-index:1001;
+    z-index: 1001;
     -moz-opacity: 0.8;
-    opacity:.80;
+    opacity: .80;
     filter: alpha(opacity=80);
+}
 
- }
- #pop-down{
+#pop-down {
     display: none;
     position: absolute;
     top: 30%;
@@ -364,11 +377,32 @@ footer{
     height: 40%;
     /* border: 16px solid lightblue; */
     background-color: white;
-    z-index:1002;
+    z-index: 1002;
     overflow: auto;
     min-width: 600px;
     min-height: 400px;
- }
- #mmm3 a{
-     color: #000;
- }
+}
+
+#pop-down h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#pop-down img {
+    width: 50px;
+    position: absolute;
+    margin-left: 5%;
+}
+
+#pop-down p {
+    width: 80%;
+    margin: 5px auto;
+    background-color: rgba(102, 102, 102, 0.34);
+    background-repeat: 0.3;
+    font-size: 20px;
+}
+
+#mmm3 a {
+    color: #000;
+}
