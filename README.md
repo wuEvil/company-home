@@ -22,3 +22,15 @@
 
 $ git config --global user.name "John Doe"
 $ git config --global user.email johndoe@example.com
+
+### 工作目标
+
+  地址栏三级联动多选.给变数值;
+
+  日期间断性多选.改变
+
+  布局的改版
+
+  定位确定
+
+  文件上传处理
