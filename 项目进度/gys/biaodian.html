@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ch-zn">
+<!-- 发团的这种需求 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>线路编辑</title>
+    <!-- <style>
+        #pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 20px auto;
+            cursor: pointer;
+        }
+
+    </style> -->
+</head>
+
+<body>
+
+    <div style="width: 80%;margin:0 auto" class="form-horizontal">
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="disabledInput">线路编号</label>
+            <div class="col-sm-10">
+                <!-- <input class="form-control" type="text" id="formGroupInputLarge" placeholder="比如:001"> -->
+                <select name="province" id="" class="form-control param_province">
+                    <option>请选择</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="g">线路标题</label>
+            <div class="col-sm-10">
+                <input class="form-control" disabled type="text" name="" value="666">
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="a">发团起止时间(最长九十天)</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="" placeholder="比如:">
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="a">线路负责人</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="" placeholder="比如:">
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="a">负责人电话</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="number" name="" placeholder="比如:">
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="a">总人数</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="number" name="" placeholder="比如:">
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="b">单笔订单最大人数</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="contact_tel" placeholder="比如:5">
+            </div>
+        </div>
+
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="c">产品特色</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" type="text" rows="3 " style="height: 100px " name="contact_name" placeholder="比如:某某某"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="d">费用说明</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" type="text" rows="3 " style="height: 100px " name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="d">出游人群限制</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3 " style="height: 100px " type="text" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="d">儿童标准(选填)</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="d">儿童价格(选填)</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="d">是否支持退()</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="d">退票说明(选填)</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3 " style="height: 100px " type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="d">退款方式</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="d">服务标准</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3 " style="height: 100px " type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="d">行程安排</label>
+            <div class="col-sm-10">
+                <textarea rows="3 " style="height: 100px " class="form-control" type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="d">线路区域:</label>
+            <div class="col-sm-10">
+                <!-- 还要有添加模块 -->
+                <textarea class="form-control" rows="3 " style="height: 100px " type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="jyxkz" class="thumbnail">
+                    <img id="jyxkzimg" src="http://hontu.net/images/qita.jpg" alt="...">
+                </label>
+                <input type="file" id="jyxkz" class="form-control" name="yyzz" style="position:absolute;opacity:0;top: 0;" accept=".jpg,.jpeg,.png">
+                <h3>营业执照
+                    <button data-toggle="modal" data-target="#myModal">预览</button>
+                </h3>
+
+            </div>
+            <div class="col-md-4">
+                <label for="jyxk" class="thumbnail">
+                    <img id="jyxkimg" src="http://hontu.net/images/qita.jpg" alt="...">
+                </label>
+                <input type="file" class="form-control" id="jyxk" name="jyxkz" style="position:absolute;opacity:0;top: 0;" accept=".jpg,.jpeg,.png">
+                <h3>经营许可证
+                    <button data-toggle="modal" data-target="#myModal">预览</button>
+                </h3>
+
+            </div>
+            <div class="col-md-4">
+                <label for="jyx" class="thumbnail">
+                    <img id="jyximg" src="http://hontu.net/images/qita.jpg" alt="...">
+                </label>
+                <input type="file" id="jyx" class="form-control" name="lxszrx" style="position:absolute;opacity:0;top: 0;" accept=".jpg,.jpeg,.png">
+                <h3>
+                    旅行社责任险
+                    <button data-toggle="modal" data-target="#myModal">预览</button>
+                </h3>
+            </div>
+
+        </div>
+        <div align="center">
+            <button type="button" class="btn btn-primary" style="margin: 0 auto" onclick="su()">去确定时间出发地和价格</button>
+        </div>
+
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    var str = {};
+    // var shuangchuanlujing = "http://192.168.1.107:8080/oyetravel/"; //看拼音
+    function su() {
+
+        $.each($(".form-control"), function (i, d) {
+            // console.log(i, d)
+            if ($(d).val() == "") {
+                alert("资料没有填完")
+                return false;
+            } else {
+                alert("quan")
+                str[$(d).attr('name')] = $(d).val();
+            }
+        });
+        console.log(str)
+
+        // $.ajax({
+        //     type: "POST",
+        //     url: shuangchuanlujing,
+        //     dada: str,
+        //     success: function (a, b, c) {
+        //         // console.log(a, b, c)
+        //         if (c.status == 200) {
+        //             alert("上传成功");
+        //         }
+        //     }
+        // })
+    }
+    $("input").each(function () {
+        var vl = $(this).val();
+        if (vl == "") {}
+    })
+    // tu
+</script>
+
+</html>

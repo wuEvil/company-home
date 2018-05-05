@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ch-zn">
+<!-- 供应商资料上传 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>供应商资料上传</title>
+    <link href="./bootstrap/plugins/fileinput/css/fileinput.min.css" rel="stylesheet" />
+    <style>
+        #pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 20px auto;
+            cursor: pointer;
+        }
+
+        .row button {
+            float: right;
+        }
+
+        .row h3 {
+            width: 80%;
+            margin: 5px auto;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- <script src="./bootstrap/js/jquery.min.js?v=2.1.4"></script> -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="./bootstrap/plugins/fileinput/js/fileinput.min.js" type="text/javascript"></script>
+    <script src="./bootstrap/plugins/fileinput/js/zh.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+    <div style="width: 80%;margin:0 auto" class="form-horizontal">
+        <!-- <form action="http://192.168.1.108:8080/oyetravel/addSupplierTest.htm" method="post"> -->
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="company_name">公司全称</label>
+            <div class="col-sm-10">
+                <!-- <input class="form-control" type="text" id="formGroupInputLarge" placeholder="比如:001"> -->
+                <input class="form-control" id="company_name" name="company_name" placeholder="工商局备案的名称哦~">
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="corporateBrand">品牌名称</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="corporateBrand" name="corporateBrand" placeholder="小名">
+            </div>
+        </div>
+
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="company_address">公司详细地址</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="company_address" name="company_address" placeholder="比如:xx市xx区xx街xx号xxx">
+                <!-- <input type="text" value="666"> -->
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="contact_tel">公司办公电话</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="contact_tel" name="contact_tel" placeholder="比如:0357-8888888">
+            </div>
+        </div>
+
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="contact_name">公司法人</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="contact_name" name="contact_name" placeholder="比如:某某某">
+            </div>
+        </div>
+
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="contact_mobile">法人联系方式</label>
+            <div class="col-sm-10">
+                <!-- <input class="form-control" type="text" id="" placeholder="d"> -->
+                <input class="form-control" type="text" id="contact_mobile" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
+            </div>
+        </div>
+        <!-- 插件上传,因为后台返回值 -->
+        <!-- <div class="form-group form-group-lg">
+            <form class="form-horizontal m-t" id="commentForm" action="">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">添加的附件</label>
+                    <div class="col-sm-10  control-label">
+                        <input id="myfile" name="myfile form-control" class="file-loading" type="file" multiple>
+                    </div>
+                </div>
+            </form>
+        </div> -->
+        <!-- base64未上传方式; -->
+        <div class="row">
+            <h1>点击下面图片,安要求上传图片</h1>
+            <div class="col-md-4">
+                <label for="jyxkz" class="thumbnail">
+                    <img id="jyxkzimg" src="http://hontu.net/images/qita.jpg" alt="...">
+                </label>
+                <input type="file" id="jyxkz" class="form-control" name="yyzz" style="position:absolute;opacity:0;top: 0;" accept=".jpg,.jpeg,.png">
+                <h3>营业执照
+                    <button data-toggle="modal" data-target="#myModal">预览</button>
+                </h3>
+
+            </div>
+            <div class="col-md-4">
+                <label for="jyxk" class="thumbnail">
+                    <img id="jyxkimg" src="http://hontu.net/images/qita.jpg" alt="...">
+                </label>
+                <input type="file" class="form-control" id="jyxk" name="jyxkz" style="position:absolute;opacity:0;top: 0;" accept=".jpg,.jpeg,.png">
+                <h3>经营许可证
+                    <button data-toggle="modal" data-target="#myModal">预览</button>
+                </h3>
+
+            </div>
+            <div class="col-md-4">
+                <label for="jyx" class="thumbnail">
+                    <img id="jyximg" src="http://hontu.net/images/qita.jpg" alt="...">
+                </label>
+                <input type="file" id="jyx" class="form-control" name="lxszrx" style="position:absolute;opacity:0;top: 0;" accept=".jpg,.jpeg,.png">
+                <h3>
+                    旅行社责任险
+                    <button data-toggle="modal" data-target="#myModal">预览</button>
+                </h3>
+            </div>
+
+        </div>
+        <div align="center">
+            <!-- type="submit" -->
+            <button class="btn btn-primary btn-lg" style="margin: 0 auto" onclick="su()">提交</button>
+        </div>
+        <!-- <button onclick="su()">提交</button> -->
+        <!-- </form> -->
+    </div>
+    <!-- 图片预览 -->
+    <!-- <div id="downimg"></div> -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        图片详情
+                    </h4>
+                </div>
+                <div class="modal-body" id="downimg">
+                    <!-- <img class="tshowimg" src="" alt=""> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</body>
+<script>
+    $("h3 button").click(
+        function (source) {
+            // console.log(
+            var b = $(this).parent().parent().children().eq(0).children().eq(0)[0].currentSrc
+            // source + "\n",
+            // $(this).parent().parent().children().eq(0)
+            // )
+            $("#downimg").html("<image src='" + b +
+                "' class='carousel-inner img-responsive img-rounded' />");
+            // $("#downimg").modal('show');
+        })
+    // $(".modal-backdrop").click(function () {
+    //     // 取消modal
+    //     alert("点我了")
+    //     $("#downimg").modal('hide')
+    // })
+
+
+
+    var str = {};
+    var shuangchuanlujing = "http://192.168.1.107:8080/oyetravel/addSupplierTest.htm"; //看拼音
+    function su() {
+        var banduan = true;
+
+        $.each($(".form-control"), function (i, d) {
+            // console.log(i, d)
+            if (typeof $(this).val() == 'undefined' || $(this).val() == "") {
+                banduan = false;
+                return false;
+            } else {
+                if (i < 6) {
+                    str[$(d).attr('name')] = $(d).val();
+                }
+
+            }
+        });
+
+        if (banduan) {
+            // alert("ok")
+            var datae = {
+                contact_mobile: $("#contact_mobile").val(),
+                corporateBrand: $("#corporateBrand").val(),
+                company_address: $("#company_address").val(),
+                contact_tel: $("#contact_tel").val(),
+                contact_name: $("#contact_name").val(),
+                contact_mobile: $("#contact_mobile").val(),
+                yyzz: $("#jyxkzimg").attr("src"),
+                jyxkz: $("#jyxkimg").attr("src"),
+                lxszrx: $("#jyximg").attr("src")
+            }
+            console.log(datae)
+            $.ajax({
+                type: "POST",
+                url: shuangchuanlujing,
+                // dada: str + "",
+                data: datae,
+                //  type: json,
+                dataType: "json",
+                // traditional: true,
+                // content - type: application / json,
+                success: function (a, b, c) {
+                    // console.log(a)
+                    console.log(b)
+                    // console.log(c)
+                    if (c.status == 200) {
+                        alert("上传成功");
+                    } else(
+                        alert("上传失败")
+                    )
+                }
+            })
+        } else {
+            alert("资料没有填完")
+        }
+        // console.log(str)
+
+
+    }
+    $("input").each(function () {
+        var vl = $(this).val();
+        if (vl == "") {}
+    })
+    // tu
+    var a
+
+    $(".form-control").change(function () {
+
+        //获得对文件列表的引用。
+        a = this;
+        var files = !!this.files ? this.files : [];
+        //如果没有选择文件，或者没有FileReader支持，返回。
+        if (!files.length || !window.FileReader) return;
+
+        // 只在选定的文件是图像时才进行。
+        if (/^image/.test(files[0].type)) {
+
+            // 创建FileReader的新实例。
+            var reader = new FileReader();
+
+            // 读取本地文件作为DataURL。
+            reader.readAsDataURL(files[0]);
+
+            // 加载时，将图像数据设置img的src路径。
+            reader.onloadend = function () {
+                // console.log($("#mmm").children().eq(0))
+
+                $(a).parent().children().eq(0).children().eq(0).attr("src", this.result)
+                // console.log(this.result)
+                str[a.name] = this.result;
+                console.log(
+                    // $(a).parent().children().eq(0).children().eq(0)[0].src
+                    // a
+                )
+            }
+
+        }
+
+    });
+
+
+
+    $('#myfile').fileinput({ //初始化上传文件框
+
+        showUpload: false,
+        showRemove: false,
+        uploadAsync: true,
+        showPreview: true,
+        showCaption: false, //是否文字描述
+        language: "zh", //配置语言
+        removeFromPreviewOnError: true, //当文件不符合规则，就不显示预览  
+        maxFileCount: 3,
+        maxFileSize: 1024 * 10, //单位为kb，如果为0表示不限制文件大小  
+        allowedFileExtensions: ["jpg", "jpeg", "png"],
+        uploadExtraData: function (previewId, index) { //额外参数 返回json数组  
+            return {
+                'id': commId
+            };
+        },
+        // }).on("filebatchuploadsuccess", function (event, data) { < span style = "white-space:pre;" > < /span>/ /
+        //         当上传成功回调函数
+        //     var response = data.response;
+        //     if (response.resultCode == '0') {
+        //         $("#closedAddWin").click();
+        //         table.ajax.reload();
+        //     }
+        // }),
+        uploadUrl: "uploadfile.do", //上传图片时的请求路径
+        deleteUrl: "deloading.do", //删除图片时的请求路径
+
+        enctype: 'multipart/form-data',
+        allowedFileExtensions: ["jpg", "png", "gif"],
+        /*上传文件格式*/
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+        dropZoneTitle: "请通过拖拽图片文件放到这里",
+        dropZoneClickTitle: "或者点击此区域添加图片",
+        showBrowse: false,
+        browseOnZoneClick: true,
+        initialPreviewAsData: true,
+        // initialPreview: path,
+        // initialPreviewConfig: cont,
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        },
+    });
+    $('#myfile').on("fileuploaded", function (event, data, previewId, index) {
+        /* var result = data.response;
+        if(result.status == 'success'){
+            layer.alert('上传成功');
+        } else {
+            layer.alert('上传失败');
+        } */
+    })
+</script>
+
+</html>
