@@ -1,4 +1,4 @@
-# company-home
+﻿# company-home
 
 主页重构
 
@@ -20,8 +20,8 @@
 
 ## 文档
 
-$ git config --global user.name "John Doe"
-$ git config --global user.email johndoe@example.com
+git config --global user.name "yym1745"
+git config --global user.email wo985417@qq.com
 
 ### 工作目标
 
