@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ch-zn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="build/kalendae.css" type="text/css" charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="build/kalendae.standalone.js" type="text/javascript" charset="utf-8"></script>
+    <title>ok</title>
+</head>
+
+<body>
+    <input type="date" name="" id="uptime">
+    <input type="date" name="" id="endtime" value="">
+    <input type="text" class="auto-kal" id="ind" style="display: none" placeholder="点击这里自定义选取" data-kal="mode: 'multiple',useYearNav:false ,months: 3, printMsg: 3,direction:'future',directionScrolling: true,	dayHeaderClickable: true,selected:2012/2/3 - 2012/3/15">
+    <button>开始</button>
+    <button id="data-xq">自定义选取</button>
+    <select class="form-control" id="shijianxuanze" onchange="getxuanzeriqi()">
+        <option value="">请选择</option>
+        <option value="1">单日发</option>
+        <option value="2">双日发</option>
+        <option value="3">周日发</option>
+        <option value="4">全部</option>
+    </select>
+
+    <div name="" id="dates_ul" cols="30" rows="10"></div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var time = new Date;
+            var mon = time.getMonth() + 1,
+                dad = time.getDate();
+            var tt, dayd;
+            // console.log(time.toLocaleDateString())
+            if (mon > 10) {
+                tt = mon;
+            } else(
+                tt = "0" + mon
+            )
+            if (dayd > 10) {
+                dayd = dad;
+            } else(
+                dayd = "0" + dad
+            )
+            var aTime = time.getFullYear() + "-" + tt + "-" + dayd
+            $("#uptime").val(aTime)
+            console.log(aTime)
+        })
+    </script>
+    <script>
+        var selectedDateArray = new Array(); //已选的时间
+
+        var resultDataArray = new Array(); //最终上传的JSON
+
+        var insuranceArray = new Array(); //保险JSON
+
+        var zuizhongriqis
+        // $("button").click(function () {
+        //     let a = $("#uptime").val()
+        //     let b = $("#endtime").val()
+        //     let c = $("#ind").val()
+
+        //     var day = get(a, b)
+        //     console.log(c)
+        //     console.log(zuizhongriqis)
+        // })
+
+        $("#data-xq").click(function () {
+            if ($('#ind').is(':hidden')) {
+                $("#ind").show();
+                // console.log($("#ind").val())
+            } else {
+                // console.log($("#txex").val())
+                $("#ind").hide();
+
+            }
+        })
+        $("#endtime").change(function () {
+            if ($("#uptime").val() > $("#endtime").val()) {
+                alert("输入真确范围")
+                return false
+            }
+        })
+
+        function getxuanzeriqi() {
+            var flag = $("#shijianxuanze").val();
+            var starttime = $("#uptime").val();
+            var endtime = $("#endtime").val();
+            if (starttime == "" || endtime == "") {
+                alert("请输入开始时间和结束时间");
+                $('#shijianxuanze')[0].selectedIndex = 0;
+                return;
+            }
+
+            if ($("#uptime").val() > $("#endtime").val()) {
+                alert("输入真确范围")
+                return false
+            }
+
+            var riqis = get(starttime, endtime);
+            zuizhongriqis = "";
+            var count = 0;
+            $("#dates_ul").empty();
+            for (var i = 0; i < riqis.length; i++) {
+                console.log(riqis[i])
+                var d = new Date(riqis[i]).getDate();
+                if (flag == "1") {
+                    if (d % 2 != 0) {
+                        zuizhongriqis += riqis[i] + ",";
+                        initDatesUl(riqis[i], count);
+                        count = count + 1;
+                    }
+                } else if (flag == "2") {
+                    if (d % 2 == 0) {
+                        zuizhongriqis += riqis[i] + ",";
+                        initDatesUl(riqis[i], count);
+                        count = count + 1;
+                    }
+                } else if (flag == "3") {
+                    if (new Date(riqis[i]).getDay() == 0) {
+                        zuizhongriqis += riqis[i] + ",";
+                        initDatesUl(riqis[i], count);
+                        count = count + 1;
+                    }
+                } else if (flag == '4') {
+                    zuizhongriqis += riqis[i] + ",";
+                    initDatesUl(riqis[i], count);
+                    count = count + 1;
+                }
+            }
+            // if (zuizhongriqis.length > 0) {
+            //     zuizhongriqis = zuizhongriqis.substring(0,
+            //         zuizhongriqis.length - 1);
+            // }
+            // $("#xuanzeriqi").val("");
+            // $("#xuanzeriqi").val(zuizhongriqis);
+            console.log(zuizhongriqis)
+        }
+
+        //初始化时间列表
+        function initDatesUl(dateStr, index) {
+            var resultObj = new Object();
+            resultObj.date = dateStr; //时间
+            resultObj.areaList = new Array(); //地区列表
+            addToResult(resultObj);
+            var inDatesLiId = "in_dates_li" + index;
+            document.getElementById("dates_ul").innerHTML +=
+                "<li style='height:25px;'><span class='inner_ul_span' id='" + inDatesLiId + "' onclick='tableSwitcher(" +
+                dateStr + "," + index + ",this)'>" + dateStr + "</span></li>";
+        }
+
+        function addToResult(resultObj) {
+            if (resultObj.date == undefined || resultObj.date == null) {
+                return;
+            }
+            for (var i = 0; i < resultDataArray.length; i++) {
+                if (resultObj.date == resultDataArray[i].date) {
+                    return;
+                }
+            }
+            resultDataArray.push(resultObj);
+        }
+
+        function get(start, end) {
+            if (start == end) {
+                return;
+            }
+            var result = [];
+            var beginDay = start.split("-");
+            var endDay = end.split("-");
+            var diffDay = new Date();
+            var dateList = new Array;
+            var i = 0;
+            diffDay.setDate(beginDay[2]);
+            diffDay.setMonth(beginDay[1] - 1);
+            diffDay.setFullYear(beginDay[0]);
+            result.push(start);
+            while (i == 0) {
+                var countDay = diffDay.getTime() + 24 * 60 * 60 * 1000;
+                diffDay.setTime(countDay);
+                dateList[2] = diffDay.getDate();
+                dateList[1] = diffDay.getMonth() + 1;
+                dateList[0] = diffDay.getFullYear();
+                if (String(dateList[1]).length == 1) {
+                    dateList[1] = "0" + dateList[1]
+                };
+                if (String(dateList[2]).length == 1) {
+                    dateList[2] = "0" + dateList[2]
+                };
+                result.push(dateList[0] + "-" + dateList[1] + "-" +
+                    dateList[2]);
+                if (dateList[0] == endDay[0] && dateList[1] == endDay[1] &&
+                    dateList[2] == endDay[2]) {
+                    i = 1;
+                }
+            };
+            //	console.log(result);
+            return result;
+        };
+    </script>
+</body>
+
+</html>
