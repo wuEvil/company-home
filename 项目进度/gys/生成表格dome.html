@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ch-zn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js "></script>
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    li {
+        list-style: none;
+        text-align: center;
+    }
+
+    .biao li {
+        float: left;
+        width: 19.75%;
+    }
+
+    .biao1 li {
+        float: left;
+        width: 24.5%;
+    }
+
+    .timeli {
+        width: 18%;
+        float: left;
+
+    }
+
+    .timeli li {
+        padding: 8px;
+    }
+
+    .table-responsive {
+        width: 80%;
+        float: left;
+    }
+</style>
+
+<body>
+    <h1 style="text-align: center">日期-地址-价格表</h1>
+    <div style="width: 80%;margin: 0 auto">
+        <div class="timeli">
+            <ul>
+                <li>日期选择</li>
+                <li>2018年5月9日</li>
+                <li>2018年5月9日</li>
+                <li>2018年5月9日</li>
+                <li>2018年5月9日</li>
+                <li>2018年5月9日</li>
+                <li>2018年5月9日</li>
+                <li>2018年5月9日</li>
+                <li>2018年5月9日</li>
+            </ul>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th>出发地</th>
+                    <th>成本价</th>
+                    <th>交接价</th>
+                    <th>门市价</th>
+                    <th>儿童价</th>
+                    <th>人数</th>
+                </tr>
+                <tr>
+                    <th> 1111</th>
+                    <td>2222</td>
+                    <td>333</td>
+                    <td>444</td>
+                    <td>555</td>
+                </tr>
+                <tr>
+                    <th> 1111</th>
+                    <td>2222</td>
+                    <td>333</td>
+                    <td>444</td>
+                    <td>555</td>
+                </tr>
+                <tr>
+                    <th> 1111</th>
+                    <td>2222</td>
+                    <td>333</td>
+                    <td>444</td>
+                    <td>555</td>
+                </tr>
+                <tr>
+                    <th> 1111</th>
+                    <td>2222</td>
+                    <td>333</td>
+                    <td>444</td>
+                    <td>555</td>
+                </tr>
+            </table>
+
+        </div>
+        <div style="clear:both;background-color: #ffffff"></div>
+    </div>
+</body>
+<script>
+    var $li = $('li');
+
+    $li.on('click', function () {
+        $li.css("background-color", "#523");
+        $(this).css("background-color", "#fff");
+    })
+</script>
+
+</html>

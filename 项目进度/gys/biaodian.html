@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css">
     <link rel="stylesheet" href="build/kalendae.css" type="text/css" charset="utf-8">
     <script src="build/kalendae.standalone.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./layer/mobile/layer.js"></script>
+    <!-- <script src="./layer/layer.js"></script> -->
     <title>线路编辑</title>
     <style>
         .width1 {
@@ -19,43 +21,42 @@
 
         #ind {
             display: none
-            /* visibility: none; */
         }
     </style>
 </head>
 
 <body>
+    <button onclick="aaa()">测试</button>
+
 
     <div style="width: 80%;margin:0 auto" class="form-horizontal">
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="disabledInput">线路编号</label>
+            <label class="col-sm-2 control-label" for="tourline_sn">线路编号</label>
             <div class="col-sm-10">
-
-
-                <!-- <input class="form-control" type="text" id="formGroupInputLarge" placeholder="比如:001"> -->
-                <select name="province" id="selecttie" class="form-control param_province">
+                <!-- <input class="form-control" type="text" id="tourline_sn" placeholder="比如:001"> -->
+                <select name="province" id="tourline_sn" class="form-control param_province">
                     <option>请选择</option>
                 </select>
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="g">线路标题</label>
+            <label class="col-sm-2 control-label" for="title">线路标题</label>
             <div class="col-sm-10">
-                <input class="form-control" disabled type="text" name="" value="666">
+                <input class="form-control" disabled type="text" id="title" value="选择编号后自动出现">
             </div>
         </div>
         <div class="form-group form-group-lg">
             <label class="col-sm-2 control-label" for="a">发团时间</label>
             <div class="col-sm-10">
                 <input class="form-control width1" type="date" name="" id="uptime">
-                <input class="form-control width1" type="date" name="" id="endtime">
+                <input class="form-control width1" type="date" value="2018-06-15" max="2018-10-15" name="" id="endtime">
                 <input type="text" class="auto-kal form-control" id="ind" placeholder="点击这里自定义选取" data-kal="mode: 'multiple',useYearNav:false ,months: 3, printMsg: 3,direction:'future',directionScrolling: true,dayHeaderClickable: true,selected:2012/2/3 - 2012/3/15">
             </div>
         </div>
         <div class="form-group form-group-lg">
             <label class="col-sm-2 control-label" for="a">发团频率</label>
             <div class="col-sm-10">
-                <select class="form-control width1" id="shijianxuanze" onchange="getxuanzeriqi()">
+                <select class="form-control width1" id="shijianxuanze">
                     <option value="">请选择</option>
                     <option value="1">单日发</option>
                     <option value="2">双日发</option>
@@ -67,7 +68,7 @@
                 <!-- </label> -->
             </div>
         </div>
-
+        <div id="nonetime" style="display: none"></div>
         <div class="form-group form-group-lg">
             <label class="col-sm-2 control-label" for="a">出发地选择(县)</label>
             <div class="col-sm-10">
@@ -80,136 +81,141 @@
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="a">线路负责人</label>
+            <label class="col-sm-2 control-label" for="tourlineHead">线路负责人</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text" name="" placeholder="比如:">
+                <input class="form-control" type="text" id="tourlineHead" placeholder="比如:">
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="a">负责人电话</label>
+            <label class="col-sm-2 control-label" for="tourlinePhone">负责人电话</label>
             <div class="col-sm-10">
-                <input class="form-control" type="number" name="" placeholder="比如:">
+                <input class="form-control" type="number" id="tourlinePhone" placeholder="比如:">
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="a">总人数</label>
+            <label class="col-sm-2 control-label" for="adult_limit">总人数</label>
             <div class="col-sm-10">
-                <input class="form-control" type="number" name="" placeholder="比如:">
+                <input class="form-control" type="number" id="adult_limit" placeholder="比如:">
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="b">单笔订单最大人数</label>
+            <label class="col-sm-2 control-label" for="adult_buy_max">单笔订单最大人数</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text" name="contact_tel" placeholder="比如:5">
-            </div>
-        </div>
-
-        <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="c">产品特色</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" type="text" rows="3 " style="height: 100px " name="contact_name" placeholder="比如:某某某"></textarea>
+                <input class="form-control" type="text" id="adult_buy_max" placeholder="比如:5">
             </div>
         </div>
 
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="d">费用说明</label>
+            <label class="col-sm-2 control-label" for="tour_feature">产品特色</label>
             <div class="col-sm-10">
-                <textarea class="form-control" type="text" rows="3 " style="height: 100px " name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
-            </div>
-        </div>
-        <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="d">出游人群限制</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" rows="3 " style="height: 100px " type="text" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
-            </div>
-        </div>
-        <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="d">儿童标准(选填)</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
+                <textarea class="form-control" type="text" rows="3 " id="tour_feature" style="height: 100px " name="contact_name" placeholder="比如:某某某"></textarea>
             </div>
         </div>
 
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="d">成本价</label>
+            <label class="col-sm-2 control-label" for="price_explain">费用说明</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
+                <textarea class="form-control" type="text" rows="3 " id="price_explain" style="height: 100px " name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="d">交接价</label>
+            <label class="col-sm-2 control-label" for="travel_restrictions">出游人群限制</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
+                <textarea class="form-control" rows="3 " id="travel_restrictions" style="height: 100px " type="text" name="contact_mobile"
+                    placeholder="比如:1XXXXXXXXXXX"></textarea>
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="d">门市价</label>
+            <label class="col-sm-2 control-label" for="child_norm">儿童标准(选填)</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
+                <input class="form-control" type="text" id="child_norm" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="costPrice">标准成本价</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="costPrice" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="dealPrice">标准交接价</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="dealPrice" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
+            </div>
+        </div>
+        <div class="form-group form-group-lg">
+            <label class="col-sm-2 control-label" for="price">标准门市价</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="price" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
             </div>
         </div>
 
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="d">儿童价格(选填)</label>
+            <label class="col-sm-2 control-label" for="childPrice">儿童价格(选填)</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
+                <input class="form-control" type="text" id="childPrice" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX">
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="d">是否支持退</label>
+            <label class="col-sm-2 control-label" for="is_refund">是否支持退款</label>
             <div class="col-sm-10">
-                <select name="city" id="selects" class="form-control">
-                    <option>请选择县</option>
-                    <option>请选择县</option>
-                    <option>请选择县</option>
+                <select name="city" id="is_refund" class="form-control">
+                    <option>不支持</option>
+                    <option>支持</option>
+                    <!-- <option>请选择县</option> -->
                 </select>
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="d">退票说明(选填)</label>
+            <label class="col-sm-2 control-label" for="refund_desc">退票说明(选填)</label>
             <div class="col-sm-10">
-                <textarea class="form-control" rows="3 " style="height: 100px " type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
+                <textarea class="form-control" rows="3 " style="height: 100px " type="text" id="refund_desc" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="d">退款方式</label>
+            <label class="col-sm-2 control-label" for="refund_method">退款方式</label>
             <div class="col-sm-10">
-                <select name="city" id="selects" class="form-control">
-                    <option>请选择县</option>
-                    <option>请选择县</option>
-                    <option>请选择县</option>
+                <select name="city" id="refund_method" class="form-control">
+                    <option>全额退款(扣除手续费)</option>
+                    <option>退20%</option>
+                    <option>退个蛇皮</option>
                 </select>
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="d">服务标准</label>
+            <label class="col-sm-2 control-label" for="appoint_desc">服务标准</label>
             <div class="col-sm-10">
-                <textarea class="form-control" rows="3 " style="height: 100px " type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
+                <textarea class="form-control" rows="3 " style="height: 100px " type="text" id="appoint_desc" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="d">行程安排</label>
+            <label class="col-sm-2 control-label" for="tour_desc">行程安排</label>
             <div class="col-sm-10">
-                <textarea rows="3 " style="height: 100px " class="form-control" type="text" id="d" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
+                <textarea rows="3 " style="height: 100px " class="form-control" type="text" id="tour_desc" name="contact_mobile" placeholder="比如:1XXXXXXXXXXX"></textarea>
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="d">线路区域:</label>
+            <label class="col-sm-2 control-label" for="tour_range">线路区域:</label>
             <div class="col-sm-10">
-                <select name="city" id="selects" class="form-control">
-                    <option>请选择县</option>
-                    <option>请选择县</option>
-                    <option>请选择县</option>
+                <select id="tour_range" class="form-control">
+                    <option>国内游</option>
+                    <option>周边游</option>
+                    <option>出境游</option>
                 </select>
             </div>
         </div>
         <div class="form-group form-group-lg ">
-            <label class="col-sm-2 control-label " for="d ">线路类型:</label>
+            <label class="col-sm-2 control-label " for="tour_type">线路类型:</label>
             <div class="col-sm-10 ">
-                <select name="city " id="selects " class="form-control ">
-                    <option>请选择县</option>
-                    <option>请选择县</option>
-                    <option>请选择县</option>
+                <select id="tour_type" class="form-control ">
+                    <option>周末游</option>
+                    <option>婚纱摄影</option>
+                    <option>游学</option>
+                    <option>夕阳红</option>
+                    <option>定制旅行</option>
+                    <option>行业团队</option>
+                    <option>蜜月游</option>
+                    <option>其他</option>
                 </select>
             </div>
         </div>
@@ -218,33 +224,33 @@
                 <label for="jyxkz " class="thumbnail ">
                     <img id="jyxkzimg " src="http://hontu.net/images/qita.jpg " alt="... ">
                 </label>
-                <input type="file " id="jyxkz " class="form-control " name="yyzz " style="position:absolute;opacity:0;top:
+                <input type="file" id="jyxkz" class="form-control" name="yyzz" style="position:absolute;opacity:0;top:
                     0; " accept=".jpg,.jpeg,.png ">
                 <h3>封面
-                    <button data-toggle="modal " data-target="#myModal ">预览</button>
+                    <button data-toggle="modal" data-target="#myModal">预览</button>
                 </h3>
 
             </div>
             <div class="col-md-4 ">
-                <label for="jyxk " class="thumbnail ">
-                    <img id="jyxkimg " src="http://hontu.net/images/qita.jpg " alt="... ">
+                <label for="jyxk" class="thumbnail ">
+                    <img id="jyxkimg" src="http://hontu.net/images/qita.jpg " alt="... ">
                 </label>
-                <input type="file " class="form-control " id="jyxk " name="jyxkz " style="position:absolute;opacity:0;top:
+                <input type="file " class="form-control " id="jyxk" name="jyxkz" style="position:absolute;opacity:0;top:
                     0; " accept=".jpg,.jpeg,.png ">
                 <h3>封面
-                    <button data-toggle="modal " data-target="#myModal ">预览</button>
+                    <button data-toggle="modal" data-target="#myModal">预览</button>
                 </h3>
 
             </div>
             <div class="col-md-4 ">
-                <label for="jyx " class="thumbnail ">
-                    <img id="jyximg " src="http://hontu.net/images/qita.jpg " alt="... ">
+                <label for="jyx" class="thumbnail ">
+                    <img id="jyximg" src="http://hontu.net/images/qita.jpg " alt="... ">
                 </label>
-                <input type="file " id="jyx " class="form-control " name="lxszrx " style="position:absolute;opacity:0;top:
-                    0; " accept=".jpg,.jpeg,.png ">
+                <input type="file " id="jyx" class="form-control" name="lxszrx" style="position:absolute;opacity:0;top:
+                    0; " accept=".jpg,.jpeg,.png">
                 <h3>
                     封面
-                    <button data-toggle="modal " data-target="#myModal ">预览</button>
+                    <button data-toggle="modal" data-target="#myModal">预览</button>
                 </h3>
             </div>
 
