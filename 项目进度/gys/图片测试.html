@@ -10,6 +10,7 @@
 
 <body>
     <img src="" alt="" srcset="">
+    <button onclick="aa()">aaa</button>
 </body>
 <script>
     var a = {
@@ -22,6 +23,13 @@
     }
     console.log(a)
     console.log(b)
+    // console.log(sessionStorage.getItem("key"))
+    // setTimeout(() => {
+    function aa() {
+        alert(11);
+        window.history.go(-1);
+    }
+    // }, 2000);
 </script>
 
 </html>

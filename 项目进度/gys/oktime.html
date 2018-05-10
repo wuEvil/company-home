@@ -9,12 +9,21 @@
     <script src="build/kalendae.standalone.js" type="text/javascript" charset="utf-8"></script>
     <title>ok</title>
 </head>
+<style>
+    .b {
+        color: aliceblue
+    }
+
+    .a {
+        color: #000;
+    }
+</style>
 
 <body>
     <input type="date" name="" id="uptime">
     <input type="date" name="" id="endtime" value="">
     <input type="text" class="auto-kal" id="ind" style="display: none" placeholder="点击这里自定义选取" data-kal="mode: 'multiple',useYearNav:false ,months: 3, printMsg: 3,direction:'future',directionScrolling: true,	dayHeaderClickable: true,selected:2012/2/3 - 2012/3/15">
-    <button>开始</button>
+    <button class="a b">开始</button>
     <button id="data-xq">自定义选取</button>
     <select class="form-control" id="shijianxuanze" onchange="getxuanzeriqi()">
         <option value="">请选择</option>
@@ -28,6 +37,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
     <script>
+        console.log(
+            sessionStorage.getItem("key"))
         $(document).ready(function () {
             var time = new Date;
             var mon = time.getMonth() + 1,
@@ -130,12 +141,7 @@
                     count = count + 1;
                 }
             }
-            // if (zuizhongriqis.length > 0) {
-            //     zuizhongriqis = zuizhongriqis.substring(0,
-            //         zuizhongriqis.length - 1);
-            // }
-            // $("#xuanzeriqi").val("");
-            // $("#xuanzeriqi").val(zuizhongriqis);
+
             console.log(zuizhongriqis)
         }
 

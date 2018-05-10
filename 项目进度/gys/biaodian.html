@@ -19,6 +19,25 @@
             display: inline;
         }
 
+        tbody input {
+            width: 120px
+        }
+
+        .timeli {
+            width: 18%;
+            float: left;
+
+        }
+
+        .timeli li {
+            padding: 8px;
+        }
+
+        .table-responsive {
+            width: 80%;
+            float: left;
+        }
+
         #ind {
             display: none
         }
@@ -26,23 +45,20 @@
 </head>
 
 <body>
-    <button onclick="aaa()">测试</button>
-
-
     <div style="width: 80%;margin:0 auto" class="form-horizontal">
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="tourline_sn">线路编号</label>
+            <label class="col-sm-2 control-label" for="title">线路标题</label>
             <div class="col-sm-10">
                 <!-- <input class="form-control" type="text" id="tourline_sn" placeholder="比如:001"> -->
-                <select name="province" id="tourline_sn" class="form-control param_province">
-                    <option>请选择</option>
+                <select name="province" id="title" onchange="tietget(this)" class="form-control param_province">
+
                 </select>
             </div>
         </div>
         <div class="form-group form-group-lg">
-            <label class="col-sm-2 control-label" for="title">线路标题</label>
+            <label class="col-sm-2 control-label" for="tourline_sn">线路编号</label>
             <div class="col-sm-10">
-                <input class="form-control" disabled type="text" id="title" value="选择编号后自动出现">
+                <input class="form-control" disabled type="text" id="tourline_sn" value="选择编号后自动出现">
             </div>
         </div>
         <div class="form-group form-group-lg">
@@ -50,13 +66,13 @@
             <div class="col-sm-10">
                 <input class="form-control width1" type="date" name="" id="uptime">
                 <input class="form-control width1" type="date" value="2018-06-15" max="2018-10-15" name="" id="endtime">
-                <input type="text" class="auto-kal form-control" id="ind" placeholder="点击这里自定义选取" data-kal="mode: 'multiple',useYearNav:false ,months: 3, printMsg: 3,direction:'future',directionScrolling: true,dayHeaderClickable: true,selected:2012/2/3 - 2012/3/15">
+                <input type="text" class="auto-kal form-control" id="ind" placeholder="点击这里自定义选取" data-kal="mode: 'multiple',useYearNav:false ,months: 3, printMsg: 3,direction:'future',directionScrolling: true,dayHeaderClickable: true,">
             </div>
         </div>
         <div class="form-group form-group-lg">
             <label class="col-sm-2 control-label" for="a">发团频率</label>
             <div class="col-sm-10">
-                <select class="form-control width1" id="shijianxuanze">
+                <select class="form-control width1" id="shijianxuanze" onchange="getxuanzeriqi()">
                     <option value="">请选择</option>
                     <option value="1">单日发</option>
                     <option value="2">双日发</option>
@@ -74,9 +90,6 @@
             <div class="col-sm-10">
                 <!-- <input class="form-control" type="text" name="" placeholder="比如:"> -->
                 <select name="city" id="selects" class="form-control param_city" multiple data-am-selected>
-                    <option>请选择县</option>
-                    <option>请选择县</option>
-                    <option>请选择县</option>
                 </select>
             </div>
         </div>
@@ -198,9 +211,9 @@
             <label class="col-sm-2 control-label" for="tour_range">线路区域:</label>
             <div class="col-sm-10">
                 <select id="tour_range" class="form-control">
-                    <option>国内游</option>
-                    <option>周边游</option>
-                    <option>出境游</option>
+                    <option value="1">国内游</option>
+                    <option value="3">周边游</option>
+                    <option value="2">出境游</option>
                 </select>
             </div>
         </div>
@@ -208,20 +221,21 @@
             <label class="col-sm-2 control-label " for="tour_type">线路类型:</label>
             <div class="col-sm-10 ">
                 <select id="tour_type" class="form-control ">
-                    <option>周末游</option>
-                    <option>婚纱摄影</option>
-                    <option>游学</option>
-                    <option>夕阳红</option>
-                    <option>定制旅行</option>
-                    <option>行业团队</option>
-                    <option>蜜月游</option>
-                    <option>其他</option>
+                    <option value="f9e704cb-0430-424f-86df-b877fdeee21b">周末游</option>
+                    <option value="cf3bb7d8-6ebd-4af9-906b-aea96fafc348">自由行</option>
+                    <option value="f588f9b3-8f22-484f-85fc-952b5caadca6">婚纱摄影</option>
+                    <option value="8f975bc7-fb76-48ef-9f97-f15d02b6e657">游学</option>
+                    <option value="7abaf51b-2dc1-4b80-9c36-fa61d7aed4e2">夕阳红</option>
+                    <option value="77590f17-f385-4156-8ee8-5571ed8a6c52">定制旅行</option>
+                    <option value="69656fd7-4799-4348-a7db-c03e435f9060">行业团队</option>
+                    <option value="38927a7a-5109-451b-b2e7-d4a7f90d0b14">蜜月游</option>
+                    <option value="1f5806d8-659d-4647-bd3b-05ed72778e75">其他</option>
                 </select>
             </div>
         </div>
         <div class="row ">
             <div class="col-md-4 ">
-                <label for="jyxkz " class="thumbnail ">
+                <label for="jyxkz" class="thumbnail ">
                     <img id="jyxkzimg " src="http://hontu.net/images/qita.jpg " alt="... ">
                 </label>
                 <input type="file" id="jyxkz" class="form-control" name="yyzz" style="position:absolute;opacity:0;top:
@@ -240,7 +254,6 @@
                 <h3>封面
                     <button data-toggle="modal" data-target="#myModal">预览</button>
                 </h3>
-
             </div>
             <div class="col-md-4 ">
                 <label for="jyx" class="thumbnail ">
@@ -255,8 +268,8 @@
             </div>
 
         </div>
-        <div align="center ">
-            <button type="button " class="btn btn-primary " style="margin: 0 auto " onclick="aaa() ">去确定时间出发地和价格</button>
+        <div align="center" style="margin-bottom:50px ">
+            <button type="button " class="btn btn-primary " style="margin: 0 auto " onclick="aaa() ">去确定具体价格</button>
         </div>
 
     </div>

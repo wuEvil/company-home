@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ch-zn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>价格表</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css">
+    <link rel="stylesheet" href="build/kalendae.css" type="text/css" charset="utf-8">
+    <script src="build/kalendae.standalone.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./layer/mobile/layer.js"></script>
+</head>
+
+<body>
+    <h1>日期-出发地-价格详情表</h1>
+    <div style="width: 100%;height: 30px;"></div>
+    <div class="timediv" style="width: 20%;float: left;">
+        1
+    </div>
+    <div style="width: 80%;float: left;height: 200px;">
+        <table class="table table-hover">
+            <tr>
+                <th>1</th>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js "></script>
+<script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js "></script>
+<script>
+    var dataall = sessionStorage.getItem("xx");
+    var datall = JSON.parse(dataall).area_cache
+    // console.log(datall)
+    // document.body.innerText = sessionStorage.getItem("xx")
+    var html1 = "";
+    for (let i = 0; i < datall.length; i++) {
+        console.log(datall[i].date)
+        html1 += `<p>${datall[i].date}</p>`
+    }
+    $(".timediv").html(html1)
+</script>
+
+</html>
