@@ -14,19 +14,40 @@
 </head>
 
 <body>
-    <h1>日期-出发地-价格详情表</h1>
+    <h1 style="text-align: center;margin-top: 20px;">日期-出发地-价格详情表</h1>
     <div style="width: 100%;height: 30px;"></div>
-    <div class="timediv" style="width: 20%;float: left;">
-        1
+    <div class="timediv" style="width: 15%;float: left;margin-right: 5%">
+        <ul class="list-group">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
     </div>
-    <div style="width: 80%;float: left;height: 200px;">
+    <div style="width: 80%;float: left;">
         <table class="table table-hover">
             <tr>
-                <th>1</th>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
+                <th>出发地</th>
+                <th>儿童价</th>
+                <th>成本价</th>
+                <th>交接价</th>
+                <th>门市价</th>
+            </tr>
+            <tr>
+                <th>批量改价</th>
+                <th>
+                    <input class="form-control" oninput="thsees(this,'childPrice')" value="" type="text">
+                </th>
+                <th>
+                    <input class="form-control" oninput="thsees(this,'costPrice')" value="" type="text">
+                </th>
+                <th>
+                    <input class="form-control" oninput="thsees(this,'dealPrice')" value="" type="text">
+                </th>
+                <th>
+                    <input class="form-control" oninput="thsees(this,'price')" value="" type="text">
+                </th>
             </tr>
         </table>
     </div>
@@ -37,15 +58,69 @@
 <script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js "></script>
 <script>
     var dataall = sessionStorage.getItem("xx");
-    var datall = JSON.parse(dataall).area_cache
+
+    var datal = JSON.parse(dataall)
+    var datall = datal.area_cache
     // console.log(datall)
     // document.body.innerText = sessionStorage.getItem("xx")
     var html1 = "";
+    var td = '';
     for (let i = 0; i < datall.length; i++) {
-        console.log(datall[i].date)
-        html1 += `<p>${datall[i].date}</p>`
+        html1 += '<li date1=' + i + ' class="list-group-item" >' + datall[i].date + '</li>'
     }
-    $(".timediv").html(html1)
+    $(".list-group").html(html1)
+    $("li").click(
+        function () {
+
+            $(this).css("background", "#99CCFF").siblings().css("background", "#ffffff");
+            funshow($(this).attr("date1"))
+        });
+
+    function funshow(i) {
+        $(".shsh").remove()
+        td = '';
+        for (let j = 0; j < datall[i].areaList.length; j++) {
+            td +=
+                `<tr class="shsh" name="${i}">
+                <th>${datall[i].areaList[j].areaName}</th>
+                <td><input class="form-control childPrice" type="text" oninput=thess(${i},${j},"childPrice",this) value="${datall[i].areaList[j].childPrice}" ></td>
+                <td><input class="form-control costPrice" type="text" oninput=thess(${i},${j},"costPrice",this) value="${datall[i].areaList[j].costPrice}" ></td>
+                <td><input class="form-control dealPrice" type="text" oninput=thess(${i},${j},"dealPrice",this) value="${datall[i].areaList[j].dealPrice}" ></td>
+                <td><input class="form-control price" type="text" oninput=thess(${i},${j},"price",this) value="${datall[i].areaList[j].price}" ></td>
+            </tr>`
+        }
+        $(".table").append(td)
+    }
+
+    function thess(i, j, c, v) {
+        // alert("ok")
+        // console.log(i, y, c)
+        // console.log($(v).val())
+        datall[i].areaList[j].childPrice = $(v).val()
+        console.log(datall[i].areaList[j].childPrice)
+        // console.log(datall)
+        sessionStorage.setItem("xx", JSON.stringify(datal))
+        // console.log(JSON.stringify(JSON.parse(dataall)))
+        // console.log(datal)
+    }
+
+    function thsees(a, b) {
+        // console.log($(".shsh .childPrice"))
+        var s = $(".shsh ." + b);
+        var ok = $(".shsh").attr("name")
+        for (let i = 0; i < s.length; i++) {
+            // s.eq(i).focus()
+            s.eq(i).val($(a).val())
+
+            thess(ok, i, b, a)
+            // s.eq(i).blur()
+        }
+
+
+
+
+
+    }
 </script>
 
 </html>

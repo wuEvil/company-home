@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ch-zn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="demo" />
+    <button onclick="fff()">111</button>
+</body>
+<script>
+    function fff(params) {
+        let input = document.getElementById('demo');
+        alert(input.value)
+        console.log(input.value)
+    }
+
+    window.onload = function () {
+
+        let input = document.getElementById('demo');
+
+        function oninputCallback() {
+            console.log('oninput event ');
+        }
+
+        function onchangeCallback() {
+            console.log('onchange event');
+        }
+
+        input.addEventListener('oninput', oninputCallback, false);
+        input.addEventListener('onchange', onchangeCallback, false);
+
+        Object.defineProperty(input, '_value', {
+            configurable: true,
+            set: function (value) {
+                this.value = value;
+                oninputCallback();
+                onchangeCallback();
+            },
+            get: function () {
+                return this.value;
+            }
+        });
+    };
+</script>
+
+</html>

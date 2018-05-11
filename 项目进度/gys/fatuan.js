@@ -77,13 +77,13 @@ function tiemdate() {
     }
 }
 
-// 获取值生产弹出层表格
+// 跳转页面
 function aaa() { // 时间地点 这里不统一获取
     tiemdate()
     $("#tour_range").val()
     console.log($("#tour_range").val())
     // 这里加一个输入判断 只做了防止报错的判断
-    if (timeda == undefined) {
+    if (timeda == undefined || $("#tourlineHead").val() == "" || $("#tourlinePhone").val() == "" || $("#adult_limit").val() == "" || $("#adult_buy_max").val() == "" || $("#tour_feature").val() == "" || $("#price_explain").val() == "" || $("#travel_restrictions").val() == "" || $("#is_refund").val() == "" || $("#appoint_desc").val() == "" || $("#tour_desc").val() == "" || $("#childPrice").val() == "") {
         alert("你们写完必填项")
         return false
     }
