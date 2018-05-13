@@ -1,35 +1,116 @@
 <!DOCTYPE html>
 <html lang="ch-zn">
 
-
-
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <title>成团信息</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>成团信息</title>
 </head>
+<style>
+  tbody {
+    margin-top: 5px
+  }
+</style>
 
 <body>
-
+  <div class="table-responsive">
+    <button class="btn" style="float: right;margin-right: 20%" onclick="aaa()">打印页面信息</button>
+    <table class="table">
+      <tbody class="">
+        <tr>
+          <th>线路名称</th>
+          <th>日期</th>
+          <th>顾客人数</th>
+          <th>点击展看人数详情</th>
+        </tr>
+      </tbody>
+      <tbody style="display: none">
+        <tr>
+          <th>线路名称</th>
+          <th>日期</th>
+          <th>顾客姓名</th>
+          <th>顾客电话</th>
+          <th>身份证</th>
+          <th>上车地</th>
+        </tr>
+      </tbody>
+    </table>
+    <div style="clear: both;"></div>
+  </div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js "></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js "></script>
 <script>
-    $.ajax({
-        // url: "http://192.168.0.108:8080/oyetravel/cloudsinformation.htm",
-        url: "http://192.168.0.107:8080/oyetravel/queryMentionTourLineListForSupplier.htm",
-        type: "GET",
-        success: function (data, b) {
-            console.log(data, b)
-        },
-        error: function () {
-            alert("sb")
-        }
-    })
+  $.ajax({
+    url: "http://192.168.0.108:8080/oyetravel/cloudsinformation.htm",
+    type: "GET",
+    // dataType: "jsonp",
+    success: function (e, data, c) {
+      // console.log(JSON.parse(e))
+      $.each(JSON.parse(e), function (i) {
+        var oki = JSON.parse(i);
+        var okv = JSON.parse(JSON.parse(e)[i]);
+        // console.log(oki)
+        let ok =
+          ` <tbody class="showx">
+        <tr>
+          <th>${oki.tourline_name}</th>
+          <th>${oki.end_time}</th>
+          <th>${okv.length}</th>
+          <th>点击展看人数详情</th>
+        </tr>
+      </tbody>`
+        $("table").append(ok);
+
+        let okk =
+          '<tbody style="display: none">' +
+          '<tr>' +
+          '<th>线路名称</th>  ' +
+          ' <th>日期</th>' +
+          ' <th>顾客姓名</th>' +
+          ' <th>顾客电话</th>' +
+          ' <th>身份证</th>' +
+          '<th>上车地</th>' +
+          '</tr>' +
+          '</tbody>'
+
+        // console.log(i); //获取键值
+
+        console.log(okv); //获取对应的value
+      });
+    },
+    error: function (e) {
+      console.log(e)
+    }
+  });
+
+
+  function aaa() {
+    $("button").hide()
+    window.print();  
+  }
+
+  function unique1(array) {
+    var n = []; //一个新的临时数组 
+    //遍历当前数组 
+    for (var i = 0; i < array.length; i++) {
+      if (n.indexOf(array[i]) == -1) n.push(array[i]);
+    }
+    return n;
+  }
+
+  $(".showx").click(function () {
+    $(this).next()
+    if ($(this).next().is(":hidden")) {
+      $(this).next().css("display", "")
+    } else {
+      $(this).next().css("display", "none")
+    }
+
+  })
 </script>
 
 </html>
