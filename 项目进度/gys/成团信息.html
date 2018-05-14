@@ -13,17 +13,24 @@
     margin-top: 5px
   }
 </style>
+<style>
+  /* .showx {
+    background: rebeccapurple;
+    color: papayawhip
+  } */
+</style>
 
 <body>
+  <input id="fjy" hidden value="gys00019">
   <div class="table-responsive">
-    <button class="btn" style="float: right;margin-right: 20%" onclick="aaa()">打印页面信息</button>
+    <button class="btn" style="float: right;margin-right: 20%" onclick="aaa()">打印全页信息</button>
     <table class="table">
       <tbody class="">
         <tr>
           <th>线路名称</th>
           <th>日期</th>
           <th>顾客人数</th>
-          <th>点击展看人数详情</th>
+          <th></th>
         </tr>
       </tbody>
       <tbody style="display: none">
@@ -31,9 +38,7 @@
           <th>线路名称</th>
           <th>日期</th>
           <th>顾客姓名</th>
-          <th>顾客电话</th>
-          <th>身份证</th>
-          <th>上车地</th>
+
         </tr>
       </tbody>
     </table>
@@ -45,7 +50,7 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js "></script>
 <script>
   $.ajax({
-    url: "http://192.168.0.108:8080/oyetravel/cloudsinformation.htm",
+    url: "http://192.168.0.108:8080/oyetravel/cloudsinformation.htm?supplierId=" + $("#fjy").val(),
     type: "GET",
     // dataType: "jsonp",
     success: function (e, data, c) {
@@ -55,32 +60,39 @@
         var okv = JSON.parse(JSON.parse(e)[i]);
         // console.log(oki)
         let ok =
-          ` <tbody class="showx">
+          `  <tbody class="showx">
         <tr>
           <th>${oki.tourline_name}</th>
-          <th>${oki.end_time}</th>
-          <th>${okv.length}</th>
-          <th>点击展看人数详情</th>
+          <th>日期:${oki.end_time}</th>
+          <th>总人数:${okv.length}</th>
+          <th>点击查看顾客详情</th>
         </tr>
       </tbody>`
         $("table").append(ok);
+        var okk;
 
-        let okk =
-          '<tbody style="display: none">' +
-          '<tr>' +
-          '<th>线路名称</th>  ' +
-          ' <th>日期</th>' +
-          ' <th>顾客姓名</th>' +
-          ' <th>顾客电话</th>' +
-          ' <th>身份证</th>' +
-          '<th>上车地</th>' +
-          '</tr>' +
-          '</tbody>'
+        for (let k = 0; k < okv.length; k++) {
+          okk += '<tr>' + '<th>' + okv[k].username + '</th>  ' + ' <th>' + okv[k].paper_sn + '</th>' +
+            ' <th>' + okv[k].mobile + '</th>' +
+            ' <th>' + okv[k].area_name + '</th>' + '</tr>';
+          // '</tbody>'
+        }
+        $("table").append('<tbody style="display: none">' + okk + '</tbody>');
+        $("table").append('<br>');
 
         // console.log(i); //获取键值
 
-        console.log(okv); //获取对应的value
+        // console.log(okv); //获取对应的value
       });
+      $(".showx").click(function () {
+        console.log($(this))
+        if ($(this).next().is(":hidden")) {
+          $(this).next().css("display", "")
+        } else {
+          $(this).next().css("display", "none")
+        }
+
+      })
     },
     error: function (e) {
       console.log(e)
@@ -101,16 +113,6 @@
     }
     return n;
   }
-
-  $(".showx").click(function () {
-    $(this).next()
-    if ($(this).next().is(":hidden")) {
-      $(this).next().css("display", "")
-    } else {
-      $(this).next().css("display", "none")
-    }
-
-  })
 </script>
 
 </html>

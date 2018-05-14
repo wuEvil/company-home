@@ -33,6 +33,7 @@ var uername;
 $.ajax({
     type: "GET",
     url: "http://192.168.0.107:8080/oyetravel/queryMentionTourLineListForSupplier.htm",
+    // dataType: "jsonp",
     success: function (data) {
         uername = data;
         for (let i = 0; i < data.length; i++) {
